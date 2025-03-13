@@ -1,0 +1,107 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+body{
+    background-color: #a3bc5a;
+}
+
+.body_container{
+    min-height: 100vh;
+    min-width: 100vw;
+    margin:0;
+    background-image: url('../html/japanese_garden_brush.png');
+    background-size: cover;
+    background-position: center;
+    background-position-y: -65vh;
+    background-repeat: no-repeat;
+    overflow:hidden;
+}
+
+/* body{
+    min-height: 100vh;
+    margin:0;
+    background-image: url('../html/japanese_garden_brush.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background:#7c99b5;
+    font-family:"Tahoma", sans-serif;
+    font-weight: 30;
+} */
+nav{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+
+nav ul{
+    margin:0;
+    padding:0;
+    list-style: none;
+    align-items: center;
+}
+
+nav li{
+    display:inline-block;
+    margin-left:70px;
+    padding:25px;
+}
+
+.taskbar_container{
+    margin: 0 auto;
+    position:relative;
+    background: #5788bddb;
+    border: 100px black;
+    border-radius:3vmax;
+    width: 3vh;
+}
+
+.taskbar_text{
+    color:#bb7a4c;
+}
+
+/* .background_img{
+    background-image:url("portfolio/img/japanese_garden_brush.png");
+    position:relative;
+    background-position:center;
+    background-size:cover;
+    height: 500px;
+} */
+.wrapper_container{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:100vh;
+}
+
+.container{
+    margin:1vh auto;
+    padding:0;
+    border: 8px solid #a3bc5a;
+    min-width: 25vw;
+    max-width:90vw;
+
+    min-height:25vw;
+    max-height: 75vh;
+
+    display:grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: 2fr 2fr;
+    gap:5px;
+}
+
+.container_item{
+    background-color:#446484;
+}
+
+.flex_item{
+    flex:1;
+}
+
+.flex_item_small{
+    background-color: #446484;
+    flex:100%;
+}
+

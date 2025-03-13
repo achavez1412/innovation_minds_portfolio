@@ -1,0 +1,55 @@
+Expresso:
+#2C1D27 (Dark Plum), 
+#8C6A5D (Muted Mocha), 
+#D9B99B (Warm Beige), 
+#C58D67 (Toasted Caramel), 
+#F4EAE0 (Soft Cream)
+
+Futurist
+#3D348B (Royal Indigo),
+ #F18701 (Burnt Sienna), 
+ #F35B04 (Deep Orange), 
+ #B5D99C (Muted Green), 
+ #F4F4F4 (Bright Gray)
+
+ Rebel
+ #111111 (Matte Black), 
+ #343434 (Graphite Gray), 
+ #5E5E5E (Slate Gray), 
+ #909090 (Silver), 
+ #D72638 (Edgy Red)
+
+Quantum
+#0F172A – Midnight Navy (Depth & Stability)
+#475569 – Cool Steel Gray (Grounding Neutral)
+#38B6FF – Electric Sky Blue (Cutting-Edge Innovation)
+#F59E0B – Vivid Amber (Dynamic Contrast)
+#F8FAFC – Crisp Off-White (Clean & Readable)
+
+Circuit
+#2E3440 – Nordic Blue Gray (Base)
+#4C566A – Slate Steel (Neutral Anchor)
+#A3BE8C – Soft Sage Green (Cool, Calming Innovation)
+#BF616A – Muted Rose Red (Edgy Yet Refined)
+#ECEFF4 – Icy White (Highlight & Freshness)
+
+Horizon
+#1E3D59 – Deep Ocean Blue (Base, Stability)
+#4A6FA5 – Soft Denim Blue (Cool, Approachable)
+#F4A261 – Sunlit Coral (Warm, Friendly Accent)
+#E9C46A – Golden Sand (Bright, Balanced Warmth)
+#FAFAFA – Soft White (Clean, Open Space)
+
+Nordic
+#2E4756 – Stormy Teal (Cool, Confident Base)
+#7EA8BE – Misty Sky Blue (Fresh & Inviting)
+#F2C14E – Soft Gold (Warm Radiance)
+#D88C9A – Dusty Rose (Subtle Warmth)
+#FAFAF9 – Cloud White (Clean & Open)
+
+Bridge
+#1C3F60 – Deep Sky Blue (Base, Professional)
+#76B2E0 – Ice Blue (Cool, Friendly)
+#F5DD90 – Soft Buttery Yellow (Warm, Open)
+#E38668 – Warm Clay (Earthy Accent)
+#F6F7EB – Ivory White (Clean, Refreshing)
