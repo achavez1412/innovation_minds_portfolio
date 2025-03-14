@@ -4,7 +4,7 @@
 }
 
 body{
-    background-color: #a3bc5a;
+    background-color: #242219;
 }
 
 .body_container{
@@ -18,18 +18,16 @@ body{
     background-repeat: no-repeat;
     overflow:hidden;
 }
+.light-theme{
+    filter:invert(0);
+    opacity:1.0;
+}
 
-/* body{
-    min-height: 100vh;
-    margin:0;
-    background-image: url('../html/japanese_garden_brush.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background:#7c99b5;
-    font-family:"Tahoma", sans-serif;
-    font-weight: 30;
-} */
+.dark-theme{
+    filter: invert(1) sepia(.5) hue-rotate(180deg);
+    opacity: .75;
+}
+
 nav{
     margin:0;
     padding:0;
@@ -88,7 +86,7 @@ nav li{
 
     display:grid;
     grid-template-columns: 3fr 2fr;
-    grid-template-rows: 2fr 2fr;
+    grid-template-rows: 4fr 1fr;
     gap:5px;
 }
 
@@ -105,3 +103,7 @@ nav li{
     flex:100%;
 }
 
+#time_zone{
+    display: inline;
+    font-size: 30px;
+}

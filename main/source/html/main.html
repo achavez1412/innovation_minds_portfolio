@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <title>Innovating Beyond the Blueprint | Alfredo Chavez</title>
     <link rel="stylesheet" href="../css/index.css">
+    <script src="../js/js_scripts.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=.5">
 </head>
 <body>
-    <div class="body_container">
+    <div class="body_container" id="body_container">
         <!-- <header><div class="taskbar_container">
             <nav>
                 <ul>
@@ -19,11 +20,11 @@
                 </ul>
             </nav>  
     </div></header> -->
-    <form class="form">
+    <form class="form" id="dark-light">
         <label>--View--</label>
         <select>
-            <option>Light Mode</option>
-            <option>Dark Mode</option>
+            <option id="light-theme" value="light-theme">Light Mode</option>
+            <option id="dark-theme" value="dark-theme" >Dark Mode</option>
         </select>
     </form>
     <form class="form">
@@ -34,20 +35,57 @@
             <option>Mandarin Chinese</option>
         </select>
     </form>
+
     <div class="wrapper_container">
     <div class="container">
-        <div class="container_item flex_container" id="introduction">
-            <p> Hi! Welcome to Innovating Beyond the Blueprint. My name is <span id="bolding_text">Alfredo Chavez</span></p>
+        <div class="container_item" id="introduction">
+            <div class="flex_container english_translation"> 
+                <p>Welcome to Innovating Beyond the Blueprint!</p>
+                <p>My name is <span id="bolding_text">Alfredo Chavez</span>, and I am an aspiring Electrical Engineer 
+                    and Software Developer driven by a deep appreciation for resourcefulness, 
+                    determination, and integrity.</p>
+                <p>If you're ever interested in connecting, I welcome and encourage the opportunity to exchange ideas 
+                    and insights. I value meaningful conversation and the chance to learn even more from others, 
+                    so feel free to reach out!</p>
+            </div>
+            <div>
+                <ul>
+                    <li>Linkedin</li>
+                    <li>Github</li>
+                    <li>Email</li>
+                </ul>
+            </div>
         </div>
-        <div class="container_item" id="contact">
-             <div class="flex_container"></div>
-             <div></div>
+
+        <div class="container_item" id="about me">
+             <div class="flex_container">
+                <p id="intro_test">Let me introduce a little something about me.</p>
+                <p>I am from California with a strong interest in robotics, 
+                    embedded systems, and software development. Some languages I have
+                    experience with are:</p>
+                <ul>
+                    <li>C</li>
+                    <li>Java</li>
+                    <li>Risc-V</li>
+                    <li>SQL</li>
+                    <li>Python</li>
+                </ul>
+                <p>Aside from technical expertise, I value environments that challenge thought, 
+                    uphold strong principles, and 	encourage impactful, meaningful work. I 
+                    approach problems in a creative and pragmatic way, seeking to not only build, 
+                    but to refine, enhance, and push boundaries.</p>
+                <p>When I am not working, I am enjoying the small things in life. I am a huge 
+                    supporter in being grateful for the experiences in our daily lives. However, 
+                    nature is the best place to be!</p>
+             </div>
+                
         </div>
+
         <div class="container_item" id="projects">
             <h2>Projects</h2>
         </div>
-        <div class="container_item" id="projects">
-            <h2>Projects 2</h2>
+        <div class="container_item" id="time">
+            <p id="time_zone"></p>
         </div>
     </div>
     </div>
