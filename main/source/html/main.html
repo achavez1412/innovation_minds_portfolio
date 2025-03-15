@@ -20,19 +20,19 @@
                 </ul>
             </nav>  
     </div></header> -->
-    <form class="form" id="dark-light">
+    <form class="form">
         <label>--View--</label>
-        <select>
-            <option id="light-theme" value="light-theme">Light Mode</option>
-            <option id="dark-theme" value="dark-theme" >Dark Mode</option>
+        <select id="dark-light">
+            <option value="light-theme">Light Mode</option>
+            <option value="dark-theme">Dark Mode</option>
         </select>
     </form>
     <form class="form">
         <label>--Language--</label>
-        <select>
-            <option>English</option>
-            <option>Spanish</option>
-            <option>Mandarin Chinese</option>
+        <select id="language-selector">
+            <option value="en-us">English</option>
+            <option value="es-mx">Spanish</option>
+            <option value="zh-cn">Mandarin Chinese</option>
         </select>
     </form>
 
@@ -40,11 +40,11 @@
     <div class="container">
         <div class="container_item" id="introduction">
             <div class="flex_container english_translation"> 
-                <p>Welcome to Innovating Beyond the Blueprint!</p>
-                <p>My name is <span id="bolding_text">Alfredo Chavez</span>, and I am an aspiring Electrical Engineer 
+                <p class="translatable_text" id="introduction_blueprint">Welcome to Innovating Beyond the Blueprint!</p>
+                <p class="translatable_text" id="introduction_self">My name is Alfredo Chavez, and I am an aspiring Electrical Engineer 
                     and Software Developer driven by a deep appreciation for resourcefulness, 
                     determination, and integrity.</p>
-                <p>If you're ever interested in connecting, I welcome and encourage the opportunity to exchange ideas 
+                <p class="translatable_text">If you're ever interested in connecting, I welcome and encourage the opportunity to exchange ideas 
                     and insights. I value meaningful conversation and the chance to learn even more from others, 
                     so feel free to reach out!</p>
             </div>
@@ -89,6 +89,12 @@
         </div>
     </div>
     </div>
+
+    <section id="projects_page">
+        <div>
+
+        </div>
+    </section>
     </div>
 </body>
 </html>

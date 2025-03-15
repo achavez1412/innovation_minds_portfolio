@@ -11,7 +11,7 @@ body{
     min-height: 100vh;
     min-width: 100vw;
     margin:0;
-    background-image: url('../html/japanese_garden_brush.png');
+    background-image: url('../html/day_theme_river_scenery.png');
     background-size: cover;
     background-position: center;
     background-position-y: -65vh;
@@ -19,12 +19,14 @@ body{
     overflow:hidden;
 }
 .light-theme{
+    background-image: url('../html/day_theme_river_scenery.png');
     filter:invert(0);
     opacity:1.0;
 }
 
 .dark-theme{
-    filter: invert(1) sepia(.5) hue-rotate(180deg);
+    background-image: url('../html/night_theme_garden_scenery.png');;
+    filter:sepia(.5);
     opacity: .75;
 }
 
