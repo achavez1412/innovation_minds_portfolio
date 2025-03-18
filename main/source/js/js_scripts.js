@@ -3,6 +3,7 @@
 
 //temp relative pathing, with imbedded json data
 //TODO:implement external json to fetch once web server started
+
 const json_temp = {
     "introduction_blueprint": {
         "en-us": "Welcome to Innovating Beyond the Blueprint!",
@@ -17,9 +18,20 @@ const json_temp = {
     "network_connect" : {
         "en-us": "If you're ever interested in connecting, I welcome and encourage the opportunity to exchange ideas and insights. I value meaningful conversation and the chance to learn even more from others, so feel free to reach out!",
         "es-mx": "Si alguna vez te interesa conectar, te doy la bienvenida y favorezco la oportunidad de intercambiar ideas y perspectivas. Valoro las conversaciones significativas y la oportunidad de aprender aún más de los demás, ¡así que no dudes en contactarme!",
-        "zh-cn": ""
+        "zh-cn": "如果你有兴趣交流，我非常欢迎并鼓励这个机会来分享想法和见解。我珍惜有意义的对话，也期待向他人学习更多，随时欢迎联系！"
     }
 }
+
+// var screen_velocity = .8;
+// function update(){
+//     var pos= window.screenTop;
+//     ".body_container".each(()=>{
+//         var element = this;
+//         var height = element.height - 20;
+//         this.css("backgroundPosition", "50% "+Math.round(height-pos)*screen_velocity+"px");
+//     });
+// };
+
 
 //figure out if window load is necessary everywhere, how to restrict
 window.onload=()=>{
@@ -46,7 +58,18 @@ window.onload=()=>{
             element.textContent = lang_json[element_id][json_key];
         });
     });
-
+    //window.addEventListener("scroll",update);
 };
+
+// window.onloadstart=()=>{
+//     //smooth scrolling animation 
+//     document.querySelector("nav a").forEach(nav_elem => {
+//         nav_elem.addEventListener('click', elem =>{
+//             elem.preventDefault();
+//             const links = document.querySelector(this.getAttribute('href'));
+//             links.scrollIntoView({behavior:'smooth'});
+//         });
+//     });
+// };
 
 //consider enabling xmlhttpsrequest to dynamically translate webpage
