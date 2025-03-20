@@ -33,21 +33,58 @@ const json_temp = {
 // };
 
 
+
 //figure out if window load is necessary everywhere, how to restrict
 window.onload=()=>{
+    let dark_mode=localStorage.getItem('dark_mode');
     const input_theme = document.getElementById("dark-light");
+    const body_container=document.body.querySelector(".body_container");
+
+    const enableDarkMode=()=>{
+        body_container.classList.remove("light_mode");
+        body_container.classList.add("dark_mode");
+        localStorage.setItem("dark_mode", "active");
+        document.getElementsByClassName("body_image").style.setProperty("background_image", "url('../html/night_shadow_range.png')");
+        console.log(document.getElementsByClassName("body_image").style.background_image, "COMPLETED");
+    }
+
+    const enableLightMode=()=>{
+        document.body.querySelector(".body_container").classList.remove("dark_mode");
+        document.body.querySelector(".body_container").classList.add("light_mode");
+        localStorage.setItem("dark_mode", null);
+    }
+
+    if(dark_mode === "active"){
+        input_theme.value = "dark_mode";
+        enableDarkMode();
+    } else{
+        input_theme.value = "light_mode";
+        enableLightMode();
+    }
+
     const lang_json = json_temp;
     let prev_val = null;
-    input_theme.addEventListener("focus", (event)=>{
-        prev_val = event.target.value;
-    })
 
+    //listen to see if the button for dark/light mode was focused on before committing to a change
+    // input_theme.addEventListener("focus", (event)=>{
+    //     prev_val = event.target.value;
+    // })
+
+    //if there is a change with the dark/light mode, enable the respective theme
     input_theme.addEventListener("change", (event)=>{
-        document.getElementById("body_container").classList.toggle(prev_val);
-        document.getElementById("body_container").classList.toggle(event.target.value);
-        prev_val = event.target.value;
+        // document.getElementById("body_container").classList.toggle(prev_val);
+        // document.getElementById("body_container").classList.toggle(event.target.value);
+        //prev_val = event.target.value;
+        dark_mode = localStorage.getItem("dark_mode");
+        if(dark_mode !== "active"){
+            enableDarkMode();
+        }
+        else if(dark_mode === "active"){
+            enableLightMode();
+        }
     });
 
+    //if there is a change of language selected, iterate through all text elements to selected lang
     document.getElementById("language-selector").addEventListener("change", (event)=>{
         let json_key = event.target.value;
         document.querySelectorAll(".translatable_text").forEach(element =>{
@@ -59,17 +96,19 @@ window.onload=()=>{
         });
     });
     //window.addEventListener("scroll",update);
+
 };
 
-// window.onloadstart=()=>{
+//window.onloadstart=()=>{
 //     //smooth scrolling animation 
-//     document.querySelector("nav a").forEach(nav_elem => {
-//         nav_elem.addEventListener('click', elem =>{
-//             elem.preventDefault();
-//             const links = document.querySelector(this.getAttribute('href'));
-//             links.scrollIntoView({behavior:'smooth'});
-//         });
-//     });
-// };
+    // document.querySelectorAll("nav a").forEach(nav_elem => {
+    //     nav_elem.addEventListener("click", function(elem){
+    //         elem.preventDefault();
+    //         const links = document.querySelector(this.getAttribute('href'));
+    //         console.log(links);
+    //         links.scrollIntoView({behavior:'smooth'});
+    //     });
+    // });
+//};
 
 //consider enabling xmlhttpsrequest to dynamically translate webpage
