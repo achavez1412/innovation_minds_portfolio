@@ -3,7 +3,6 @@
 
 //temp relative pathing, with imbedded json data
 //TODO:implement external json to fetch once web server started
-
 const json_temp = {
     "introduction_blueprint": {
         "en-us": "Welcome to Innovating Beyond the Blueprint!",
@@ -38,19 +37,21 @@ const json_temp = {
 window.onload=()=>{
     let dark_mode=localStorage.getItem('dark_mode');
     const input_theme = document.getElementById("dark-light");
-    const body_container=document.body.querySelector(".body_container");
+    const body_main=document.querySelector(".body_main");
 
     const enableDarkMode=()=>{
-        body_container.classList.remove("light_mode");
-        body_container.classList.add("dark_mode");
+        body_main.classList.remove("light_mode");
+        body_main.classList.add("dark_mode");
         localStorage.setItem("dark_mode", "active");
-        document.getElementsByClassName("body_image").style.setProperty("background_image", "url('../html/night_shadow_range.png')");
-        console.log(document.getElementsByClassName("body_image").style.background_image, "COMPLETED");
+        //document.getElementsByClassName("body_image").style.setProperty("background_image", "url('../html/night_shadow_range.png')");
+        //console.log(document.getElementsByClassName("body_image").style.background_image, "COMPLETED");
     }
 
     const enableLightMode=()=>{
-        document.body.querySelector(".body_container").classList.remove("dark_mode");
-        document.body.querySelector(".body_container").classList.add("light_mode");
+        // document.body.querySelector(".body_main").classList.remove("dark_mode");
+        // document.body.querySelector(".body_main").classList.add("light_mode");
+        body_main.classList.remove("dark_mode");
+        body_main.classList.add("light_mode");
         localStorage.setItem("dark_mode", null);
     }
 
@@ -65,6 +66,26 @@ window.onload=()=>{
     const lang_json = json_temp;
     let prev_val = null;
 
+    const set_error=(error,message)=>{
+//todo
+    }
+
+    const submission_checker=()=>{
+        let first_name = document.getElementById("first_name").value.trim();
+        let last_name = document.getElementById("last_name").value.trim();
+        let email = document.getElementById("email").value.trim();
+
+        let array_iter = [first_name, last_name, email];
+
+        for(let iter of array_iter){
+            //if none null, trim
+            if(iter === null || iter === ''){
+                //set error
+                console.log("fio");
+            }
+        }
+
+    }
     //listen to see if the button for dark/light mode was focused on before committing to a change
     // input_theme.addEventListener("focus", (event)=>{
     //     prev_val = event.target.value;
@@ -97,7 +118,19 @@ window.onload=()=>{
     });
     //window.addEventListener("scroll",update);
 
+    //event listener if button is submitted (event has to be listened through the form, not elements itself)
+    document.getElementById("submission").addEventListener("submit", (event)=>{        
+        event.preventDefault();
+        submission_checker();
+    });
 };
+
+$(document).ready(()=>{
+    $("#submission_button").on("click",() => {
+        console.log("CLICKED!");
+    });
+});
+
 
 //window.onloadstart=()=>{
 //     //smooth scrolling animation 

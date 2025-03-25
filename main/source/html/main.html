@@ -5,11 +5,14 @@
     <title>Innovating Beyond the Blueprint | Alfredo Chavez</title>
     <link rel="stylesheet" href="../css/index.css">
     <script src="../html/js_scripts.js"></script>
+    <!-- <script src="../html/jquery-3.7.1.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=.5">
 </head>
-<body>
-    <div class="body_container body_image" id="body_container">
+<body class="body_main" id="body_main">
+    <!-- <div class="body_container body_image" id="body_container"> -->
     <header>
+         
         <div class="taskbar_container">
             <nav>
                 <ul>
@@ -19,8 +22,6 @@
                 </ul>
             </nav>  
         </div>
-    </header>
-    
     <form class="form">
         <label>--View--</label>
         <select id="dark-light">
@@ -37,6 +38,8 @@
             <option value="zh-cn">Mandarin Chinese</option>
         </select>
     </form>
+    </header>
+    
 
     <div class="wrapper_container" id="main_page">
     <div class="container formatting_block">
@@ -59,7 +62,6 @@
                 </ul>
             </div>
         </div>
-
         <div class="container_item" id="about me">
              <div class="flex_container">
                 <p id="intro_test">Let me introduce a little something about me.</p>
@@ -83,9 +85,6 @@
              </div>
                 
         </div>
-
-
-        
         <div class="container_item" id="projects">
             <h2><a href="#projects_page">Projects</a></h2>
         </div>
@@ -93,7 +92,6 @@
         <div class="container_item" id="time">
             <p id="time_zone"></p>
         </div>
-
     </div>
     </div>
 
@@ -101,35 +99,32 @@
         <section class="card" id="projects_page">
             <div>
                 <p>some of the projects are here! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque malesuada nunc vestibulum neque laoreet, eget molestie metus tempor. Suspendisse quis ligula sit amet purus dapibus elementum. Aliquam porta, felis non iaculis sagittis, justo ex vestibulum elit, eget feugiat turpis nisl vel eros. Aliquam erat volutpat. Fusce in erat laoreet, sodales turpis in, porttitor est. Aliquam pulvinar lobortis nisi sed mattis. Quisque gravida orci ac metus auctor, a dictum augue congue. Nulla venenatis lorem ut dignissim vehicula.
-    
                     In vestibulum eros at lacus interdum, sit amet imperdiet leo interdum. Nullam ex mi, fermentum sed enim vitae, ornare tempor purus. Sed ac purus ac est ultricies luctus. Phasellus eget neque bibendum, scelerisque elit ac, ultrices ligula. Duis pretium urna non lacus pellentesque convallis. Suspendisse volutpat hendrerit libero nec interdum. Fusce dapibus nunc augue, eget varius neque gravida id. Integer tincidunt egestas risus sit amet sagittis.
-                    
-                </p>
-                    
-                
-                    
-                    
+                </p>  
             </div>
         </section>
         
         <section class="card" id="connect_page">
             <h2>Let's Connect! Feel Free to Leave Your Information for New Experiences!</h2>
-            <form action="#" class="submit_form">
+            <form action="" class="submit_form" id="submission">
                 <div>
-                    <input type="text" class="form-input" placeholder="Full Name" aria-label="first_and_last name">
+                    <div>
+                        <input type="text" class="form-input" id="first_name" placeholder="First Name" aria-label="first_name" required>
+                        <input type="text" class="form-input" id="last_name" placeholder="Last Name" aria-label="last_name" required>
+                    </div>
+                    <div>
+                        <input type="email" class="form-input" id="email" placeholder="Email" aria-label="email_address" required>
+                    </div>
+                    <div>
+                        <textarea type="text" class="form-input" placeholder="Short Message (Optional)" aria-label="message"></textarea>
+                    </div>
+                    <button class="form-button" id="submission_button" type="submit"> Send </button>
                 </div>
-                <div>
-                    <input type="text" class="form-input" placeholder="Email" aria-label="email_address">
-                </div>
-                <div>
-                    <input type="text" class="form-input" placeholder="Short Message (Optional)" aria-label="message">
-                </div>
-                <button class="form-button" type="submit"> Send </button>
             </form>
         </section>
     </section>
 
 
-    </div>
+    <!-- </div> -->
 </body>
 </html>

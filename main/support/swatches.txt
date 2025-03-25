@@ -1,3 +1,39 @@
+Generation:
+
+portfolio:
+#283618
+#606C38
+#FEFAE0
+#DDA15E
+#BC6C25
+
+night_shade:
+#4B4F4F (outer space)
+#8E9A85 (cambridge blue)
+#E2DFD1 (bone)
+#76969A (cadet gray)
+#576E78 (Payne's gray)
+--
+#76969A
+#E2DFD1
+#A0A4D1
+#576E78
+#8E9A85
+#4B4F4F
+#CEA478
+
+
+Version1.0:
+#3d657a
+#e3c590
+#a88f65
+#3b5a76
+#567d46
+#263238
+#c49051
+
+
+
 Expresso:
 #2C1D27 (Dark Plum), 
 #8C6A5D (Muted Mocha), 

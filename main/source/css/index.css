@@ -11,7 +11,7 @@ html{
 }
 
 :root{
-    --clr-bkgrd:#242219;
+    --clr-bkgrd:#283618;
     --clr-container:#bf7f3b;
     --clr-bodr:#4355bb;
     --clr-bodr-blu:#2d74d1;
@@ -37,13 +37,13 @@ html{
     --clr-light-accent400:#3d657a;
     --clr-light-nav:#e9e19b;
 
-    --clr-dark-primary:#3d657a;
-    --clr-dark-secondary:#e3c590;
-    --clr-dark-accent100:#a88f65;
-    --clr-dark-accent200:#3b5a76;
-    --clr-dark-accent300:#567d46;
-    --clr-dark-accent400:#263238;
-    --clr-dark-nav:#c49051;
+    --clr-dark-primary:  #606C38;
+    --clr-dark-secondary:#FEFAE0;
+    --clr-dark-accent100:#A0A4D1;
+    --clr-dark-accent200:#E6B87F;
+    --clr-dark-accent300:#BC6C25;
+    --clr-dark-accent400:#283618;
+    --clr-dark-nav:      #DDA15E;
     
     --foreground:var(--clr-dark-primary);
     --background:var(--clr-dark-secondary);
@@ -57,6 +57,7 @@ html{
     --clr-accent300:var(--clr-dark-accent300);
     --clr-accent400:var(--clr-dark-accent400);
     --clr-nav:var(--clr-dark-nav);
+    filter:sepia(.2);
     /* background-image: url('../html/night_shadow_range.png'); */
     /* filter:sepia(.7);
     opacity: .75;  */
@@ -70,6 +71,7 @@ html{
     --clr-accent300:var(--clr-light-accent300);
     --clr-accent400:var(--clr-light-accent400);
     --clr-nav:var(--clr-light-nav);
+    filter:none;
     /* background-image: url('../html/clouds_night.png'); */
     /* filter:invert(0);
     opacity:1.0; */
@@ -115,7 +117,7 @@ body{
     text-align: right;
     padding-right: 5%;
     color:var(--clr-secondary);
-    background-color: var(--clr-accent100);
+    background-color: var(--clr-accent300);
     /* position:relative; */
     /* width:15%;
     height:5%; */
@@ -179,7 +181,7 @@ nav a{
 }
 
 nav a:hover{
-    color:var(--clr-accent300);
+    color:var(--clr-accent100);
 }
 
 /* @keyframes fade-in{
@@ -206,7 +208,6 @@ nav a:hover{
 .container{
     color:var(--clr-secondary);
     vertical-align: top;
-
     display:grid;
     grid-template-columns: 3fr 2fr;
     grid-template-rows: 4fr 1fr;
@@ -225,13 +226,17 @@ nav a:hover{
 
 .container_item{
     background-color:var(--clr-primary);
-    border: 6px solid var(--clr-accent400);
+    border: 6px solid var(--clr-accent300);
     border-radius: .5em;
     color:var(--clr-secondary);
+    text-wrap: wrap;
+    padding: 1em;
+
 }
 
 .container_item a{
     text-decoration: none;
+    color:var(--clr-secondary);
 }
 
 .flex_item{
@@ -258,7 +263,7 @@ nav a:hover{
 .card{
     display:grid;
     background:var(--clr-primary);
-    border: 5px solid var(--clr-accent400);
+    border: 5px solid var(--clr-accent300);
     border-radius: .5em;
     color:var(--clr-secondary);
     gap:1rem;
@@ -266,13 +271,33 @@ nav a:hover{
     margin-bottom: 2rem;
 }
 
+.submit_form{
+    display:grid;
+    flex-direction: column;
+    border-radius: 25px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.2);
+    color:var(--clr-accent100);
+    background-color: var(--clr-accent100);
+    width:65%;
+    height: 80%;
+    min-width: 10rem;
+    min-height: 15rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-input{
+    width:50rem;
+    padding:0;
+    margin:0 auto;
+}
 /*@container(width > 45ch){
     .card{
         grid-template-columns: auto minmax(2ch, 1fr);
     }
 } */
 
-.submit_form{
+/* .submit_form{
     display:grid;
     flex-direction: column;
     box-shadow: 0 0 30px rgba(0,0,0,0.2);
@@ -283,11 +308,11 @@ nav a:hover{
     max-width:90%;
     height:20rem;
     align-items: center;
-    margin:0 auto;
+    margin:0 auto; 
     margin-bottom: 2%;
-}
+} */
 
-.form-input, .form-button{
+/* .form-input, .form-button{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-transform: uppercase;
     font-weight: 800;
@@ -298,14 +323,16 @@ nav a:hover{
     height:50%;
     margin:0 auto;
     color:var(--clr-accent400);
-}
+} */
 
-.form-input{
-    padding:2em;
+/* .form-input{
+    padding-left:2em;
+    padding-right: 2em;
     color:var(--clr-accent400);
-}
+} */
 
-.form-input:focus::placeholder{
+/* .form-input:focus::placeholder{
     color:var(--clr-accent400);
     opacity: .85;
-}
+} */
+
