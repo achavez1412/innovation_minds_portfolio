@@ -135,7 +135,7 @@ body{
     margin:0 auto;
     top:0;
     left:0;
-    border: 5px solid var(--clr-accent400);
+    /* border: 5px solid var(--clr-accent400); */
     height: 3rem;
     width: 100%;
     position:fixed;
@@ -271,7 +271,7 @@ nav a:hover{
     margin-bottom: 2rem;
 }
 
-.submit_form{
+.submit{
     display:grid;
     flex-direction: column;
     border-radius: 25px;

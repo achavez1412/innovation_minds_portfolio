@@ -38,6 +38,8 @@ window.onload=()=>{
     let dark_mode=localStorage.getItem('dark_mode');
     const input_theme = document.getElementById("dark-light");
     const body_main=document.querySelector(".body_main");
+    const lang_json = json_temp;
+    let prev_val = null;
 
     const enableDarkMode=()=>{
         body_main.classList.remove("light_mode");
@@ -55,42 +57,7 @@ window.onload=()=>{
         localStorage.setItem("dark_mode", null);
     }
 
-    if(dark_mode === "active"){
-        input_theme.value = "dark_mode";
-        enableDarkMode();
-    } else{
-        input_theme.value = "light_mode";
-        enableLightMode();
-    }
-
-    const lang_json = json_temp;
-    let prev_val = null;
-
-    const set_error=(error,message)=>{
-//todo
-    }
-
-    const submission_checker=()=>{
-        let first_name = document.getElementById("first_name").value.trim();
-        let last_name = document.getElementById("last_name").value.trim();
-        let email = document.getElementById("email").value.trim();
-
-        let array_iter = [first_name, last_name, email];
-
-        for(let iter of array_iter){
-            //if none null, trim
-            if(iter === null || iter === ''){
-                //set error
-                console.log("fio");
-            }
-        }
-
-    }
-    //listen to see if the button for dark/light mode was focused on before committing to a change
-    // input_theme.addEventListener("focus", (event)=>{
-    //     prev_val = event.target.value;
-    // })
-
+    //implement UI behavior changes with focusing
     //if there is a change with the dark/light mode, enable the respective theme
     input_theme.addEventListener("change", (event)=>{
         // document.getElementById("body_container").classList.toggle(prev_val);
@@ -116,19 +83,150 @@ window.onload=()=>{
             element.textContent = lang_json[element_id][json_key];
         });
     });
-    //window.addEventListener("scroll",update);
 
-    //event listener if button is submitted (event has to be listened through the form, not elements itself)
-    document.getElementById("submission").addEventListener("submit", (event)=>{        
-        event.preventDefault();
-        submission_checker();
-    });
+    //enable whatever mode is marked
+    if(dark_mode === "active"){
+        input_theme.value = "dark_mode";
+        enableDarkMode();
+    } else{
+        input_theme.value = "light_mode";
+        enableLightMode();
+    }
 };
 
 $(document).ready(()=>{
-    $("#submission_button").on("click",() => {
-        console.log("CLICKED!");
+    //checks simple class and tag format
+    const valid_format=(element_name)=>{
+        //todo: improve RE
+        const re_elem_str = /^[\#\.]*/;
+        return re_elem_str.test(String(element_name));
+    }
+    //takes in element_name and a message to send via error form
+    const set_form_error_msg=(element_name,message)=>{
+        if(typeof(element_name) === "string" && typeof(message)==="string"){
+            if(!valid_format(element_name)){
+                return;
+            }
+            $(element_name).innerHTML= message;
+            return;
+        }
+    }
+
+    //compress into 1 func
+    const name_checker=(name)=>{
+        const regex_name_str = /[\p{L}]*/;
+        //const regex_name_str = /[A-Za-z]*/;
+        return regex_name_str.test(String(name));
+    }
+
+    const email_checker=(email)=>{
+        console.log("email being checked");
+        //const regex_str=/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        //const regex_str=/^[A-Za-z0-9\.\-_]*[@][A-Za-z]*[\.][a-z]{2,4}$/;
+        const regex_str=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        console.log(regex_str.test(email), " | ", email);
+        return regex_str.test(String(email));
+    }
+
+    //checks parameters(hard-coded)
+    //TODO modularize to 
+    const valid_elem_all=()=>{
+        let first_name = $("#first_name").attr("isValid");
+        let last_name = $("#last_name").attr("isValid");
+        let email = $("#email").attr("isValid");
+        console.log("hi");
+        if(first_name === "true" && last_name === "true" && email === "true"){
+            $("#submission_button").prop("disabled","false");
+            console.log("called and Checked");
+        }else{
+            console.log("only callled");
+        }
+    }
+
+    const submission_checker=()=>{
+        let first_name = document.getElementById("first_name").value.trim();
+        let last_name = document.getElementById("last_name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        
+        let array_iter = [first_name, last_name, email];
+        
+        for(let iter of array_iter){
+            //if none null, trim
+            if(iter == null || iter == ''){
+                //set error
+                console.log("fio");
+            }
+        }
+        console.log("understood");
+    }
+
+    $("#first_name").on("keydown",()=>{
+        let first_name = $(this).value;
+        if(first_name === '' || first_name === null){
+            $(this).prop("isVaild", "false");
+            set_form_error_msg("#first_name_error","Invalid/Required");
+        }
+        else{
+            if(!name_checker(first_name)){
+                $(this).prop("isVaild", "false");
+                set_form_error_msg("#first_name_error","Invalid/Required");
+            }else{
+                $(this).prop("isVaild", "true");
+                console.log("first name is valid; checking rest");
+                valid_elem_all();
+            }
+        }
     });
+    
+    $("#last_name").on("keydown",()=>{
+        let last_name = $(this).value;
+        if(last_name === '' || last_name === null){
+            $(this).prop("isVaild", "false");
+            set_form_error_msg("#last_name_error","Invalid/Required");
+        }
+        else{
+            if(!name_checker(last_name)){
+                $("#last_name").prop("isVaild", "false");
+                set_form_error_msg("#last_name_error","Invalid/Required");
+            }else{
+                $(this).prop("isVaild", "true");
+                console.log("last name is valid; checking rest");
+                valid_elem_all();
+            }
+        }
+    });
+
+    $("#email_address").on("focus input",()=>{
+        let email = $(this).value;
+        console.log(email, ": email first sent");
+        if(email === ''|| email === null){
+            $(this).prop("isVaild", "false");
+            set_form_error_msg("#email_error","Please Submit a Valid Email Address!");
+        }else{
+            if(!email_checker(email)){
+                $(this).prop("isVaild", "false");
+                set_form_error_msg("#email_error", "Please Submit a Valid Email Adress!");
+            }else{
+                $(this).prop("isVaild", "true");
+                console.log("email is valid; checking rest");
+                valid_elem_all();
+            }
+        }
+    });
+
+    //check out text message doesn't allow for 
+    // $("#").on("focus onkeydown",(event)=>{
+
+    // });
+
+    //event listener if button is submitted (event has to be listened through the form, not elements itself)
+    $("#submission").on("submit",(event)=>{
+        event.preventDefault();
+        submission_checker();
+    });
+    
+    //disable submission process default
+    $("#submission_button").prop("disabled","true");
 });
 
 

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
+    <!-- Remember HTML Sequential, Dependencies prior above -->
     <meta charset="UTF-8">
     <title>Innovating Beyond the Blueprint | Alfredo Chavez</title>
+
     <link rel="stylesheet" href="../css/index.css">
+    <script src="../html/jquery-3.7.1.min.js"></script>
     <script src="../html/js_scripts.js"></script>
-    <!-- <script src="../html/jquery-3.7.1.min.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=.5">
 </head>
 <body class="body_main" id="body_main">
@@ -107,16 +109,19 @@
         <section class="card" id="connect_page">
             <h2>Let's Connect! Feel Free to Leave Your Information for New Experiences!</h2>
             <form action="" class="submit_form" id="submission">
-                <div>
+                <div class="submit">
                     <div>
-                        <input type="text" class="form-input" id="first_name" placeholder="First Name" aria-label="first_name" required>
-                        <input type="text" class="form-input" id="last_name" placeholder="Last Name" aria-label="last_name" required>
+                        <input type="text" class="form-input" id="first_name" placeholder="*First Name* (Required)" aria-label="first_name" minlength="1" maxlength="50" type="string" required>
+                        <span class="error_message" id="first_name_error"></span>
+                        <input type="text" class="form-input" id="last_name" placeholder="*Last Name* (Required)" aria-label="last_name" minlength="1" maxlength="100" type="string" required>
+                        <span class="error_message" id="last_name_error"></span>
                     </div>
                     <div>
-                        <input type="email" class="form-input" id="email" placeholder="Email" aria-label="email_address" required>
+                        <input type="email" class="form-input" id="email_address" placeholder="*Email* (Required)" aria-label="email_address" minlength="5" maxlength="100"  type="string" required>
+                        <span class="error_message" id="email_error"></span>
                     </div>
                     <div>
-                        <textarea type="text" class="form-input" placeholder="Short Message (Optional)" aria-label="message"></textarea>
+                        <textarea type="text" class="form-input" placeholder="Short Message (Optional)" aria-label="message" type="string"></textarea>
                     </div>
                     <button class="form-button" id="submission_button" type="submit"> Send </button>
                 </div>
