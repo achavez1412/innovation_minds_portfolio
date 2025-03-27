@@ -95,19 +95,25 @@ window.onload=()=>{
 };
 
 $(document).ready(()=>{
+   //disable submission process default
+   $("#submission_button").prop("disabled",true);
+
     //checks simple class and tag format
     const valid_format=(element_name)=>{
         //todo: improve RE
         const re_elem_str = /^[\#\.]*/;
         return re_elem_str.test(String(element_name));
     }
+
     //takes in element_name and a message to send via error form
     const set_form_error_msg=(element_name,message)=>{
         if(typeof(element_name) === "string" && typeof(message)==="string"){
             if(!valid_format(element_name)){
                 return;
             }
-            $(element_name).innerHTML= message;
+            console.log("Inner HTML ERROR should be changed")
+            $(element_name).html(message);
+            console.log($(element_name).html());
             return;
         }
     }
@@ -131,14 +137,15 @@ $(document).ready(()=>{
     //checks parameters(hard-coded)
     //TODO modularize to 
     const valid_elem_all=()=>{
-        let first_name = $("#first_name").attr("isValid");
-        let last_name = $("#last_name").attr("isValid");
-        let email = $("#email").attr("isValid");
-        console.log("hi");
-        if(first_name === "true" && last_name === "true" && email === "true"){
-            $("#submission_button").prop("disabled","false");
+        let first_name = $("#first_name")[0].checkValidity();
+        let last_name = $("#last_name")[0].checkValidity();
+        let email = $("#email_address")[0].checkValidity();
+        console.log("bool val (first, last, email) | (", first_name, " , ", last_name, " , ",email, ")");
+        if(first_name && last_name && email){
+            $("#submission_button").prop("disabled",false);
             console.log("called and Checked");
         }else{
+            $("#submission_button").prop("disabled",true);
             console.log("only callled");
         }
     }
@@ -160,58 +167,65 @@ $(document).ready(()=>{
         console.log("understood");
     }
 
-    $("#first_name").on("keydown",()=>{
-        let first_name = $(this).value;
+    $("#first_name").on("focus input",()=>{
+        let first_name = $("#first_name").val();
         if(first_name === '' || first_name === null){
-            $(this).prop("isVaild", "false");
+            $("#first_name")[0].setCustomValidity("Invalid");
             set_form_error_msg("#first_name_error","Invalid/Required");
         }
         else{
             if(!name_checker(first_name)){
-                $(this).prop("isVaild", "false");
+                $("#first_name")[0].setCustomValidity("Invalid");
                 set_form_error_msg("#first_name_error","Invalid/Required");
             }else{
-                $(this).prop("isVaild", "true");
+                // $("first_name").prop("isVaild", "true");
+                $("#first_name")[0].setCustomValidity("");
+                set_form_error_msg("#first_name_error","Valid");
                 console.log("first name is valid; checking rest");
-                valid_elem_all();
             }
         }
+        valid_elem_all();
     });
     
-    $("#last_name").on("keydown",()=>{
-        let last_name = $(this).value;
+    //get this keyword to work 
+    $("#last_name").on("focus input",()=>{
+        let last_name = $('#last_name').val();
+        console.log(last_name);
+        console.log(this);
         if(last_name === '' || last_name === null){
-            $(this).prop("isVaild", "false");
+            $("#last_name")[0].setCustomValidity("Invalid");
             set_form_error_msg("#last_name_error","Invalid/Required");
         }
         else{
             if(!name_checker(last_name)){
-                $("#last_name").prop("isVaild", "false");
+                $("#last_name")[0].setCustomValidity("Invalid");
                 set_form_error_msg("#last_name_error","Invalid/Required");
             }else{
-                $(this).prop("isVaild", "true");
+                $("#last_name")[0].setCustomValidity("");
+                set_form_error_msg("#last_name_error","Valid");
                 console.log("last name is valid; checking rest");
-                valid_elem_all();
             }
         }
+        valid_elem_all();
     });
 
     $("#email_address").on("focus input",()=>{
-        let email = $(this).value;
+        let email = $("#email_address").val();
         console.log(email, ": email first sent");
         if(email === ''|| email === null){
-            $(this).prop("isVaild", "false");
+            $("#email_address")[0].setCustomValidity("Invalid");
             set_form_error_msg("#email_error","Please Submit a Valid Email Address!");
         }else{
             if(!email_checker(email)){
-                $(this).prop("isVaild", "false");
+                $("#email_address")[0].setCustomValidity("Invalid");
                 set_form_error_msg("#email_error", "Please Submit a Valid Email Adress!");
             }else{
-                $(this).prop("isVaild", "true");
+                $("#email_address")[0].setCustomValidity("");
+                set_form_error_msg("#email_error","Valid Email Address");
                 console.log("email is valid; checking rest");
-                valid_elem_all();
             }
         }
+        valid_elem_all();
     });
 
     //check out text message doesn't allow for 
@@ -225,8 +239,6 @@ $(document).ready(()=>{
         submission_checker();
     });
     
-    //disable submission process default
-    $("#submission_button").prop("disabled","true");
 });
 
 

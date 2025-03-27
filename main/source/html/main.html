@@ -98,12 +98,27 @@
     </div>
 
     <section class="cards formatting_block">
-        <section class="card" id="projects_page">
-            <div>
-                <p>some of the projects are here! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque malesuada nunc vestibulum neque laoreet, eget molestie metus tempor. Suspendisse quis ligula sit amet purus dapibus elementum. Aliquam porta, felis non iaculis sagittis, justo ex vestibulum elit, eget feugiat turpis nisl vel eros. Aliquam erat volutpat. Fusce in erat laoreet, sodales turpis in, porttitor est. Aliquam pulvinar lobortis nisi sed mattis. Quisque gravida orci ac metus auctor, a dictum augue congue. Nulla venenatis lorem ut dignissim vehicula.
-                    In vestibulum eros at lacus interdum, sit amet imperdiet leo interdum. Nullam ex mi, fermentum sed enim vitae, ornare tempor purus. Sed ac purus ac est ultricies luctus. Phasellus eget neque bibendum, scelerisque elit ac, ultrices ligula. Duis pretium urna non lacus pellentesque convallis. Suspendisse volutpat hendrerit libero nec interdum. Fusce dapibus nunc augue, eget varius neque gravida id. Integer tincidunt egestas risus sit amet sagittis.
-                </p>  
+        <section class="card formatting_text" id="projects_page">
+            <div class="card_inner">
+                <h2 class="bulletpoint">EECS149: Payload It Forward</h2>
+                <img id="eecs149_poster" src="../../img/EECS149 Final Poster_ .svg" alt="Final Class Poster for Embedded Device Project">
+                <ul>
+                    <li>The goal of this project was to be able to create an initial prototype for a testbed that is able to backhaul data through a data mule using BLE and WIFI to a server of some kind.</li>
+                    <li>With the myriad of events that occurred, the initial vision for the project underwent multiple iterations, whilst still accomplishing a core portion that identifies the project, upholding the design process.</li>
+
+                </ul> 
             </div>
+
+            <div class="card_inner">
+                <h2 class="bulletpoint">CS160: BANDO <br> The Music and Community Events App</h2>
+                <img id="cs160_front" src="../../img/CS160_bando_intro.svg" alt="Cover Page for Music Community Events App">
+                <img id="cs160_fid_pt3" src="../../img/CS160_bando_high_fid_pt3.svg" alt="An example of high fidelity wireframes of a segment of the application">
+                <ul>
+                    <li>The goal of this project was to demonstrate the UX/UI lifecycle from conception to production.</li>
+                    <li>A snippet is shown that exemplifies a portion of the design process where wireframes were developed.</li>
+                </ul>
+            </div>
+            
         </section>
         
         <section class="card" id="connect_page">
@@ -111,7 +126,8 @@
             <form action="" class="submit_form" id="submission">
                 <div class="submit">
                     <div>
-                        <input type="text" class="form-input" id="first_name" placeholder="*First Name* (Required)" aria-label="first_name" minlength="1" maxlength="50" type="string" required>
+                        <!-- <label></label> -->
+                        <input type="text" class="form-input" id="first_name" placeholder="First Name  *" aria-label="first_name" minlength="1" maxlength="50" type="string" required>
                         <span class="error_message" id="first_name_error"></span>
                         <input type="text" class="form-input" id="last_name" placeholder="*Last Name* (Required)" aria-label="last_name" minlength="1" maxlength="100" type="string" required>
                         <span class="error_message" id="last_name_error"></span>
@@ -121,7 +137,7 @@
                         <span class="error_message" id="email_error"></span>
                     </div>
                     <div>
-                        <textarea type="text" class="form-input" placeholder="Short Message (Optional)" aria-label="message" type="string"></textarea>
+                        <textarea type="text" class="" placeholder="Short Message (Optional)" aria-label="message" type="string"></textarea>
                     </div>
                     <button class="form-button" id="submission_button" type="submit"> Send </button>
                 </div>

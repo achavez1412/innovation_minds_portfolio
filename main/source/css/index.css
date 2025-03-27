@@ -57,7 +57,7 @@ html{
     --clr-accent300:var(--clr-dark-accent300);
     --clr-accent400:var(--clr-dark-accent400);
     --clr-nav:var(--clr-dark-nav);
-    filter:sepia(.2);
+    /* filter:sepia(.3); */
     /* background-image: url('../html/night_shadow_range.png'); */
     /* filter:sepia(.7);
     opacity: .75;  */
@@ -202,7 +202,9 @@ nav a:hover{
     height:min(95%,70rem);
     width:100vw;
     position:relative;
-    /* overflow:hidden; */
+    overflow:visible;
+    filter:none;
+    padding-bottom: 15rem;
 }
 
 .container{
@@ -215,13 +217,18 @@ nav a:hover{
 }
 
 .formatting_block{
-    margin: 0 5vw 10vh 5vw;
+    margin: 0rem 5rem 10rem 5rem;
     padding-block:2rem;
     opacity: .98;
+    width:90vw;
     min-width:25vw;
     max-width:90vw;
     min-height:25vw;
     max-height:75vh;
+}
+
+.formatting_text{
+    display: inline-block;
 }
 
 .container_item{
@@ -231,7 +238,6 @@ nav a:hover{
     color:var(--clr-secondary);
     text-wrap: wrap;
     padding: 1em;
-
 }
 
 .container_item a{
@@ -253,11 +259,43 @@ nav a:hover{
     font-size: 30px;
 }
 
+#projects_page{
+    counter-reset: project-num;
+}
+
+.bulletpoint{
+    padding-top: 1em;
+    position:relative;
+    text-align: center;
+}
+
+.bulletpoint::before{
+    counter-increment: project-num;
+    content:counter(project-num) ') ';
+    position:absolute;
+    left:.5em;
+}
+
+#eecs149_poster{
+    height:90%;
+    width:95%;
+    padding-top: 1em;
+    padding-bottom: 2em;
+    margin:0 auto;
+    align-self: center;
+    justify-self: center;
+}
+
+#cs160_front, #cs160_fid_pt3{
+    height:50%;
+    width:45%;
+}
 .cards{
+    display:block;
     container-type: inline-size;
     width: 100vw;
     height:min(95%,70rem);
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
 }
 
 .card{
@@ -270,7 +308,9 @@ nav a:hover{
     text-align: center;
     margin-bottom: 2rem;
 }
-
+.card_inner{
+    padding:5rem;
+}
 .submit{
     display:grid;
     flex-direction: column;
@@ -282,8 +322,14 @@ nav a:hover{
     height: 80%;
     min-width: 10rem;
     min-height: 15rem;
-    align-items: center;
-    justify-content: center;
+    align-content: center;
+    justify-items: center;
+}
+
+#submission{
+    justify-items: center;
+    align-content: center;
+    padding-bottom: 1rem;
 }
 
 .form-input{
@@ -291,6 +337,15 @@ nav a:hover{
     padding:0;
     margin:0 auto;
 }
+
+/* .form-input:invalid{
+    .error_message{color:red};
+}
+
+.form-input:valid{
+    .error_message{color:green;}
+} */
+
 /*@container(width > 45ch){
     .card{
         grid-template-columns: auto minmax(2ch, 1fr);
