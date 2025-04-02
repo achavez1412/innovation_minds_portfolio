@@ -36,7 +36,7 @@ const json_temp = {
 //figure out if window load is necessary everywhere, how to restrict
 window.onload=()=>{
     let dark_mode=localStorage.getItem('dark_mode');
-    const input_theme = document.getElementById("dark-light");
+    const input_theme = document.getElementById("dark_light");
     const body_main=document.querySelector(".body_main");
     const lang_json = json_temp;
     let prev_val = null;
@@ -73,7 +73,7 @@ window.onload=()=>{
     });
 
     //if there is a change of language selected, iterate through all text elements to selected lang
-    document.getElementById("language-selector").addEventListener("change", (event)=>{
+    document.getElementById("language_selector").addEventListener("change", (event)=>{
         let json_key = event.target.value;
         document.querySelectorAll(".translatable_text").forEach(element =>{
             let element_id = element.id;
@@ -106,7 +106,7 @@ $(document).ready(()=>{
     }
 
     //takes in element_name and a message to send via error form
-    const set_form_error_msg=(element_name,message)=>{
+    const set_form_msg=(element_name,message)=>{
         if(typeof(element_name) === "string" && typeof(message)==="string"){
             if(!valid_format(element_name)){
                 return;
@@ -150,10 +150,15 @@ $(document).ready(()=>{
         }
     }
 
+    //resets form(**ideally given a form id, reset all fields of form) rn only reset explicit fields
+    const reset_form=(id)=>{
+        $(id)[0].reset();
+    }
+
     const submission_checker=()=>{
-        let first_name = document.getElementById("first_name").value.trim();
-        let last_name = document.getElementById("last_name").value.trim();
-        let email = document.getElementById("email").value.trim();
+        let first_name = $("#first_name").val().trim();
+        let last_name = $("#last_name").val().trim();
+        let email = $("#email_address").val().trim();
         
         let array_iter = [first_name, last_name, email];
         
@@ -165,22 +170,37 @@ $(document).ready(()=>{
             }
         }
         console.log("understood");
+        alert("Your submission has been recorded!");
+        reset_form("#submission");
     }
 
+    const elem_validator=(elem,)=>{
+        //do sanity checks about format of elem
+        let target_element = $(elem).val();
+        if(target_element === '' || target_element === null){
+            $(target_element)[0].setCustomValidity("Invalid");
+        }
+    }
+    
     $("#first_name").on("focus input",()=>{
         let first_name = $("#first_name").val();
         if(first_name === '' || first_name === null){
             $("#first_name")[0].setCustomValidity("Invalid");
-            set_form_error_msg("#first_name_error","Invalid/Required");
+            $("#first_name").addClass("form-control");
+            $("#first_name_error").addClass("invalid-feedback");
+            set_form_msg("#first_name_error","Invalid/Required");
         }
         else{
             if(!name_checker(first_name)){
                 $("#first_name")[0].setCustomValidity("Invalid");
-                set_form_error_msg("#first_name_error","Invalid/Required");
+                $("#first_name_error").addClass("invalid-feedback");
+                set_form_msg("#first_name_error","Invalid/Required");
             }else{
                 // $("first_name").prop("isVaild", "true");
                 $("#first_name")[0].setCustomValidity("");
-                set_form_error_msg("#first_name_error","Valid");
+                $("#first_name_error").addClass("valid-feedback");
+                $("#first_name").addClass("was-validated");
+                set_form_msg("#first_name_error","Valid");
                 console.log("first name is valid; checking rest");
             }
         }
@@ -194,15 +214,15 @@ $(document).ready(()=>{
         console.log(this);
         if(last_name === '' || last_name === null){
             $("#last_name")[0].setCustomValidity("Invalid");
-            set_form_error_msg("#last_name_error","Invalid/Required");
+            set_form_msg("#last_name_error","Invalid/Required");
         }
         else{
             if(!name_checker(last_name)){
                 $("#last_name")[0].setCustomValidity("Invalid");
-                set_form_error_msg("#last_name_error","Invalid/Required");
+                set_form_msg("#last_name_error","Invalid/Required");
             }else{
                 $("#last_name")[0].setCustomValidity("");
-                set_form_error_msg("#last_name_error","Valid");
+                set_form_msg("#last_name_error","Valid");
                 console.log("last name is valid; checking rest");
             }
         }
@@ -214,14 +234,14 @@ $(document).ready(()=>{
         console.log(email, ": email first sent");
         if(email === ''|| email === null){
             $("#email_address")[0].setCustomValidity("Invalid");
-            set_form_error_msg("#email_error","Please Submit a Valid Email Address!");
+            set_form_msg("#email_error","Please Submit a Valid Email Address!");
         }else{
             if(!email_checker(email)){
                 $("#email_address")[0].setCustomValidity("Invalid");
-                set_form_error_msg("#email_error", "Please Submit a Valid Email Adress!");
+                set_form_msg("#email_error", "Please Submit a Valid Email Adress!");
             }else{
                 $("#email_address")[0].setCustomValidity("");
-                set_form_error_msg("#email_error","Valid Email Address");
+                set_form_msg("#email_error","Valid Email Address");
                 console.log("email is valid; checking rest");
             }
         }
@@ -236,12 +256,38 @@ $(document).ready(()=>{
     //event listener if button is submitted (event has to be listened through the form, not elements itself)
     $("#submission").on("submit",(event)=>{
         event.preventDefault();
+        if(!valid_elem_all()){
+            event.stopPropagation();
+        }
+        $("#submission").addClass("was-validated");
         submission_checker();
     });
     
 });
 
-
+/*$(document).ready(function () {
+        $('#myForm').bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                email: {
+                    validators: {
+                        notEmpty: { message: 'Email is required' },
+                        emailAddress: { message: 'Invalid email' }
+                    }
+                },
+                password: {
+                    validators: {
+                        notEmpty: { message: 'Password is required' },
+                        stringLength: { min: 6, message: 'Minimum 6 characters' }
+                    }
+                }
+            }
+        });
+    }); */
 //window.onloadstart=()=>{
 //     //smooth scrolling animation 
     // document.querySelectorAll("nav a").forEach(nav_elem => {
