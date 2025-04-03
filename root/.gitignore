@@ -1,0 +1,8 @@
+server/node_modules/
+server/package-lock.json
+server/package.json
+
+client/node_modules/
+client/package-lock.json
+client/package.json
+client/public/Grad_pic.png
