@@ -1,5 +1,10 @@
+###OS gen files###
 .DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
 
+###Root files###
 root/.DS_Store
 root/server/node_modules/
 root/server/package-lock.json
@@ -14,6 +19,7 @@ root/client/public/.DS_Store
 root/client/public/assets/.DS_Store
 root/client/public/html/.DS_Store
 
+###first version files###
 prev_version/.DS_Store
 prev_version/main/.DS_Store
 prev_version/main/img/.DS_Store
