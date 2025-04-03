@@ -1,13 +1,23 @@
 .DS_Store
 
+root/.DS_Store
 root/server/node_modules/
 root/server/package-lock.json
 root/server/package.json
 
+root/client/.DS_Store
 root/client/node_modules/
 root/client/package-lock.json
 root/client/package.json
 root/client/public/Grad_pic.png
+root/client/public/.DS_Store
+root/client/public/assets/.DS_Store
+root/client/public/html/.DS_Store
+
+prev_version/.DS_Store
+prev_version/main/.DS_Store
+prev_version/main/img/.DS_Store
+prev_version/main/source/.DS_Store
 
 prev_version/node_modules/
 prev_version/pkg/
