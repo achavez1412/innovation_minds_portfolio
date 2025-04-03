@@ -1,0 +1,15 @@
+.DS_Store
+
+root/server/node_modules/
+root/server/package-lock.json
+root/server/package.json
+
+root/client/node_modules/
+root/client/package-lock.json
+root/client/package.json
+root/client/public/Grad_pic.png
+
+prev_version/node_modules/
+prev_version/pkg/
+prev_version/package-lock.json
+prev_version/package.json
