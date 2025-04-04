@@ -221,7 +221,7 @@ nav li:hover{
     height:1.5rem;
 }
 
-.wrapper_container{
+/* .wrapper_container{
     display:inline-flex;
     position:relative;
     overflow:visible;
@@ -234,7 +234,7 @@ nav li:hover{
     justify-content: center;
     padding:1.5rem 0rem 5rem 0rem;
     margin:0 auto;
-}
+} */
 
 /* .container{
     color:var(--clr-secondary);
@@ -251,8 +251,38 @@ nav li:hover{
     max-height:35%;
     
 } */
-.container{
+ /* .container_item{
+    background-color:var(--clr-primary);
+    border: 6px solid var(--clr-accent300);
+    border-radius: .5em;
     color:var(--clr-secondary);
+    overflow: hidden;
+    text-wrap: wrap;
+    padding: 1em;
+    max-width: 100%;
+    max-height:100%;
+} */
+
+/* .flex_container{
+    flex:100%;
+} */
+.wrapper_container{
+    display:inline-flex;
+    position:relative;
+    overflow:visible;
+    overflow-x: hidden;
+    filter:none;
+    
+    height:min(50%,50vh);
+    width:100%;
+    align-items: center;
+    justify-content: center;
+    padding:1.5rem 0rem 5rem 0rem;
+    margin:0 auto;
+}
+
+.container{
+    /* color:var(--clr-secondary); */
     display:grid;
     overflow-x: hidden;
     justify-content: center;
@@ -261,11 +291,59 @@ nav li:hover{
     grid-template-rows: 1fr;
     gap:1rem;
     margin:0 auto;
-    padding:2rem 0rem 1rem 0rem;
-    max-width:90%;
-    max-height:35%;
-    
+    /* padding:2rem 0rem 1rem 0rem; */
+    padding: 0rem 0rem 0rem 0rem;
+    width:100%;
+    height:75vh;
 }
+
+.container_item{
+    /* display:grid;
+    overflow-x: hidden;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+    gap:1rem;
+    height:50%;
+    width:100%;
+    margin:0 auto;
+    padding:0rem 0rem 0rem 0rem; */
+    display:grid;
+    overflow-x: hidden;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 1fr;
+    justify-content: stretch;
+    align-items: center;
+    overflow: hidden;
+    text-wrap: wrap;
+    padding: 1em;
+    max-width: 100%;
+    max-height:100%;
+}
+
+.flex_item{
+    background-color:var(--clr-primary);
+    border: 6px solid var(--clr-accent300);
+    border-radius: .5em;
+    color:var(--clr-secondary);
+    overflow: hidden;
+    text-wrap: wrap;
+    padding: 1em;
+    max-width: 100%;
+    max-height:100%;
+
+    /* display:grid;
+    overflow-x: hidden;
+    justify-content: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr; */
+}
+
+.flex_item_small{
+    background-color: var(--clr-primary);
+    flex:100%;
+}
+
 .formatting_block{
     /* margin: 0rem 5rem 10rem 5rem;
     padding-block:2rem; */
@@ -279,37 +357,6 @@ nav li:hover{
 
 .formatting_text{
     /* display: inline-block; */
-}
-/* .container_item{
-    background-color:var(--clr-primary);
-    border: 6px solid var(--clr-accent300);
-    border-radius: .5em;
-    color:var(--clr-secondary);
-    overflow: hidden;
-    text-wrap: wrap;
-    padding: 1em;
-    max-width: 100%;
-    max-height:100%;
-} */
-.container_item{
-    /* background-color:var(--clr-primary);
-    border: 6px solid var(--clr-accent300);
-    border-radius: .5em;
-    color:var(--clr-secondary);
-    overflow: hidden;
-    text-wrap: wrap;
-    padding: 1em;
-    max-width: 100%;
-    max-height:100%; */
-
-    display:grid;
-    overflow-x: hidden;
-    justify-content: center;
-    grid-template-columns: 1fr;
-    grid-template-rows: 2fr 1fr;
-    gap:1rem;
-    margin:0 auto;
-    padding:0rem 0rem 0rem 0rem;
 }
 
 #photo_me{
@@ -326,33 +373,6 @@ nav li:hover{
     text-decoration: none;
     color:var(--clr-secondary);
     background-color: var(--clr-accent100);
-}
-
-/* .flex_container{
-    flex:100%;
-} */
-
-.flex_container{
-    background-color:var(--clr-primary);
-    border: 6px solid var(--clr-accent300);
-    border-radius: .5em;
-    color:var(--clr-secondary);
-    overflow: hidden;
-    text-wrap: wrap;
-    padding: 1em;
-    max-width: 100%;
-    max-height:50%;
-
-    display:grid;
-    overflow-x: hidden;
-    justify-content: center;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 2fr;
-}
-
-.flex_item_small{
-    background-color: var(--clr-primary);
-    flex:100%;
 }
 
 #time_zone{
@@ -602,6 +622,15 @@ nav li:hover{
     overflow: scroll;
     resize: none;
     height: 75%;
+}
+
+.form-control{
+    /* display:grid;
+    gap:1rem;
+    grid-template-rows: 1fr 1fr 1.5fr 1fr; */
+    /* position:absolute;
+    top:-1rem; */
+    height:3.75rem;
 }
 /* .submit_group input{
     width:100%;

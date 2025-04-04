@@ -120,12 +120,18 @@ $(document).ready(()=>{
 
     //compress into 1 func
     const name_checker=(name)=>{
+        if(name===null){
+            return false;
+        }
         const regex_name_str = /[\p{L}]*/;
         //const regex_name_str = /[A-Za-z]*/;
         return regex_name_str.test(String(name));
     }
 
     const email_checker=(email)=>{
+        if(email===null){
+            return false;
+        }
         console.log("email being checked");
         //const regex_str=/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         //const regex_str=/^[A-Za-z0-9\.\-_]*[@][A-Za-z]*[\.][a-z]{2,4}$/;
@@ -152,6 +158,7 @@ $(document).ready(()=>{
 
     //resets form(**ideally given a form id, reset all fields of form) rn only reset explicit fields
     const reset_form=(id)=>{
+        $(id).removeClass("was-validated");
         $(id)[0].reset();
     }
 
@@ -174,78 +181,49 @@ $(document).ready(()=>{
         reset_form("#submission");
     }
 
-    const elem_validator=(elem,)=>{
+    const elem_validator=(elem,error_tag,msg_tag,msg_fail,msg_success,is_email="false")=>{
         //do sanity checks about format of elem
+
+        //implement better format
+        $("#submission").addClass("was-validated");
         let target_element = $(elem).val();
+        let format_bool;
+
         if(target_element === '' || target_element === null){
-            $(target_element)[0].setCustomValidity("Invalid");
+            format_bool = false;
         }
+        else if(is_email){
+            format_bool = email_checker(target_element);
+        }else{
+            format_bool = name_checker(target_element);
+        }
+
+        if(!format_bool){
+            $(elem)[0].setCustomValidity("Invalid");
+            $(elem).addClass("form-control");
+            $(error_tag).addClass("invalid-feedback");
+            set_form_msg(msg_tag,msg_fail);
+        }
+        else{
+            $(elem)[0].setCustomValidity("");
+            $(error_tag).addClass("valid-feedback");
+            $(elem).addClass("was-validated");
+            set_form_msg(msg_tag,msg_success);
+        }
+        valid_elem_all();
     }
     
     $("#first_name").on("focus input",()=>{
-        let first_name = $("#first_name").val();
-        if(first_name === '' || first_name === null){
-            $("#first_name")[0].setCustomValidity("Invalid");
-            $("#first_name").addClass("form-control");
-            $("#first_name_error").addClass("invalid-feedback");
-            set_form_msg("#first_name_error","Invalid/Required");
-        }
-        else{
-            if(!name_checker(first_name)){
-                $("#first_name")[0].setCustomValidity("Invalid");
-                $("#first_name_error").addClass("invalid-feedback");
-                set_form_msg("#first_name_error","Invalid/Required");
-            }else{
-                // $("first_name").prop("isVaild", "true");
-                $("#first_name")[0].setCustomValidity("");
-                $("#first_name_error").addClass("valid-feedback");
-                $("#first_name").addClass("was-validated");
-                set_form_msg("#first_name_error","Valid");
-                console.log("first name is valid; checking rest");
-            }
-        }
-        valid_elem_all();
+        elem_validator("#first_name","#first_name_error", "#first_name_error", "Invalid Input", "Valid Input",false);
     });
     
     //get this keyword to work 
     $("#last_name").on("focus input",()=>{
-        let last_name = $('#last_name').val();
-        console.log(last_name);
-        console.log(this);
-        if(last_name === '' || last_name === null){
-            $("#last_name")[0].setCustomValidity("Invalid");
-            set_form_msg("#last_name_error","Invalid/Required");
-        }
-        else{
-            if(!name_checker(last_name)){
-                $("#last_name")[0].setCustomValidity("Invalid");
-                set_form_msg("#last_name_error","Invalid/Required");
-            }else{
-                $("#last_name")[0].setCustomValidity("");
-                set_form_msg("#last_name_error","Valid");
-                console.log("last name is valid; checking rest");
-            }
-        }
-        valid_elem_all();
+        elem_validator("#last_name", "#last_name_error","#last_name_error", "Invalid Input", "Valid Input", false);
     });
 
     $("#email_address").on("focus input",()=>{
-        let email = $("#email_address").val();
-        console.log(email, ": email first sent");
-        if(email === ''|| email === null){
-            $("#email_address")[0].setCustomValidity("Invalid");
-            set_form_msg("#email_error","Please Submit a Valid Email Address!");
-        }else{
-            if(!email_checker(email)){
-                $("#email_address")[0].setCustomValidity("Invalid");
-                set_form_msg("#email_error", "Please Submit a Valid Email Adress!");
-            }else{
-                $("#email_address")[0].setCustomValidity("");
-                set_form_msg("#email_error","Valid Email Address");
-                console.log("email is valid; checking rest");
-            }
-        }
-        valid_elem_all();
+        elem_validator("#email_address", "#email_error","#email_error", "Please Submit a Valid Email Address", "Valid Email Address", true);
     });
 
     //check out text message doesn't allow for 
@@ -259,7 +237,6 @@ $(document).ready(()=>{
         if(!valid_elem_all()){
             event.stopPropagation();
         }
-        $("#submission").addClass("was-validated");
         submission_checker();
     });
     
