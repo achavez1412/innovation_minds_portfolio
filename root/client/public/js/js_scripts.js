@@ -1,6 +1,9 @@
 // var today = new Date();
 // document.getElementById("time_zone").innerHTML=today;
 
+//import the script from ajax_langauge
+//import { get_language_option } from "./ajax_language.js";
+
 //temp relative pathing, with imbedded json data
 //TODO:implement external json to fetch once web server started
 const json_temp = {
@@ -73,16 +76,16 @@ window.onload=()=>{
     });
 
     //if there is a change of language selected, iterate through all text elements to selected lang
-    document.getElementById("language_selector").addEventListener("change", (event)=>{
-        let json_key = event.target.value;
-        document.querySelectorAll(".translatable_text").forEach(element =>{
-            let element_id = element.id;
-            if(element_id === null || element_id === ''){
-                return;
-            }
-            element.textContent = lang_json[element_id][json_key];
-        });
-    });
+    // document.getElementById("language_selector").addEventListener("change", (event)=>{
+    //     let json_key = event.target.value;
+    //     document.querySelectorAll(".translatable_text").forEach(element =>{
+    //         let element_id = element.id;
+    //         if(element_id === null || element_id === ''){
+    //             return;
+    //         }
+    //         element.textContent = lang_json[element_id][json_key];
+    //     });
+    // });
 
     //enable whatever mode is marked
     if(dark_mode === "active"){
@@ -213,6 +216,23 @@ $(document).ready(()=>{
         valid_elem_all();
     }
     
+
+    //====event trigger====
+    $("#language_selector").on("change", async ()=>{
+        const language_object = await get_all_language_option($("#language_selector").val());
+        console.log("This is the whole object: ", language_object.data);
+        $(".translatable_text").each(function(){
+            let element_id = this.id;
+            if(element_id === null || element_id === ''){
+                return;
+            }else{
+                console.log("my key element_id is: ", element_id);
+                console.log("my key text is: ", language_object.data[element_id]);
+                $('#' + String(element_id)).html(language_object.data[element_id]);
+            }
+        });
+    });
+
     $("#first_name").on("focus input",()=>{
         elem_validator("#first_name","#first_name_error", "#first_name_error", "Invalid Input", "Valid Input",false);
     });
@@ -225,11 +245,6 @@ $(document).ready(()=>{
     $("#email_address").on("focus input",()=>{
         elem_validator("#email_address", "#email_error","#email_error", "Please Submit a Valid Email Address", "Valid Email Address", true);
     });
-
-    //check out text message doesn't allow for 
-    // $("#").on("focus onkeydown",(event)=>{
-
-    // });
 
     //event listener if button is submitted (event has to be listened through the form, not elements itself)
     $("#submission").on("submit",(event)=>{
