@@ -1,5 +1,10 @@
 Generation:
-
+   /* --clr-light-primary:#f7e5b4; */
+    /* #f0cdbc 
+       #3b5a76
+       #e3c590
+       #f7e5b4 */
+       
 portfolio:
 #283618
 #606C38

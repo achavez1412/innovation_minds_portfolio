@@ -131,5 +131,5 @@ html(lang="en")
                                 span(class="error_message", id="email_error")
                             div.submit_group
                                 label(class="") Short Message
-                                textarea(type="text", class="", id="short_message", placeholder="Short Message (Optional)", aria-label="message")
+                                textarea(type="text", class="", id="short_message", placeholder="Short Message (Optional)", aria-label="message", minlength="0", maxlength="1000")
                             button(class="", id="submission_button", type="submit") Send

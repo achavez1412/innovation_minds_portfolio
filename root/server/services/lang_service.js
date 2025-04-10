@@ -1,5 +1,5 @@
 //get the data from the lang option
-const language_connector = require("../database/lang_db_middleware.js");
+const language_connector = require("../database/lang_db.js");
 
 const get_lang_data = (language_option)=>{
     console.log("you have made it all the way over here with language_option: ",language_option);

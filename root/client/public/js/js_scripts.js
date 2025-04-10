@@ -248,15 +248,15 @@ $(document).ready(()=>{
             successful_transaction = true;
             //break;
         } catch(error){
-            if(error==="Response Error"){
-                console.log("Response Error: Unexpected Transaction, Trying Again");
-                successful_transaction=false;
-            }
+            console.log("Response Error: Unexpected Transaction, Trying Again: ",error);
+            //alert user for failure
+            successful_transaction=false;
+            
         }
         //}
 
         console.log("This is the whole object: ", language_object.data);
-
+        
         $(".translatable_text").each(function(){
             let element_id = this.id;
             if(element_id === null || element_id === ''){
