@@ -18,7 +18,7 @@ const get_all_language_option=(language_option)=>{
                     reject(error);
                 }
             });
-        },timeout_time);
+        },timeout_time); 
     });
     
     

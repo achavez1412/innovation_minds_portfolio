@@ -97,6 +97,7 @@ window.onload=()=>{
     }
 };
 
+//check for alternatives for $(document).ready bc deprecated and ignored by JQ3.0.0
 $(document).ready(()=>{
    //disable submission process default
    $("#submission_button").prop("disabled",true);
@@ -219,16 +220,53 @@ $(document).ready(()=>{
 
     //====event trigger====
     $("#language_selector").on("change", async ()=>{
-        const language_object = await get_all_language_option($("#language_selector").val());
+        //error handling for key checking
+        try{
+            var language_selection = $("#language_selector").val();
+            //hard-coded supported language options,with intention of making it stored on backend
+            let supported_languages=["en-us","es-mx","zh-cn"];
+            if(language_selection === "" || language_selection === null || !supported_languages.includes(language_selection)){
+                throw new Error("ValueError: Current Selection Is Not Supported");
+            }
+        } catch(error){
+            console.log(`We could not process the language change due to Error: ${error}`);
+            return;
+        }
+
+        
+        //erro handling from ajx call
+        //future: if 1 timeout, try again then handle exception
+        var language_object = {};  
+        let successful_transaction = false;
+        // let cycle_limit = 4;
+        // for(let cycles = 0; (cycles < cycle_limit && !successful_transaction); cycles++){
+        try{
+            language_object = await get_all_language_option(language_selection);
+            if(language_object.status != response.ok){
+                throw new Error("Response Error");
+            }
+            successful_transaction = true;
+            //break;
+        } catch(error){
+            if(error==="Response Error"){
+                console.log("Response Error: Unexpected Transaction, Trying Again");
+                successful_transaction=false;
+            }
+        }
+        //}
+
         console.log("This is the whole object: ", language_object.data);
+
         $(".translatable_text").each(function(){
             let element_id = this.id;
             if(element_id === null || element_id === ''){
                 return;
             }else{
-                console.log("my key element_id is: ", element_id);
+                console.log(`my key element_id is: ${element_id}`);
                 console.log("my key text is: ", language_object.data[element_id]);
-                $('#' + String(element_id)).html(language_object.data[element_id]);
+                // $('#' + String(element_id)).html(language_object.data[element_id]);
+                $(`#${String(element_id)}`).html(language_object.data[element_id]);
+                // element_id.textContent = String(language_object.data[element_id]);
             }
         });
     });
