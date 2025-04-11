@@ -2,18 +2,24 @@
     "en-us":{
         "introduction_blueprint":"Welcome to Innovating Beyond the Blueprint!",
         "introduction_self":"My name is Alfredo Chavez, and I am an aspiring Electrical Engineer and Software Developer driven by a deep appreciation for resourcefulness, determination, and integrity.",
-        "network_connect":"If you're ever interested in connecting, I welcome and encourage the opportunity to exchange ideas and insights. I value meaningful conversation and the chance to learn even more from others, so feel free to reach out!"
+        "network_connect":"If you're ever interested in connecting, I welcome and encourage the opportunity to exchange ideas and insights. I value meaningful conversation and the chance to learn even more from others, so feel free to reach out!",
+        "preface_about_me":"Let me introduce a little something about me.",
+        "values_about_me":"Aside from technical expertise, I value environments that challenge thought, uphold strong principles, and encourage impactful, meaningful work. I approach problems in a creative and pragmatic way, seeking to not only build, but to refine, enhance, and push boundaries."
     },
 
     "es-mx":{
         "introduction_blueprint":"¡Bienvenidos a Innovando Más Allá del Diseño!",
         "introduction_self":"Me llamo Alfredo Chávez y soy un aspirante de la Ingeniera Eléctrica y Computación, motivado por un aprecio fuerte del ingenio, la determinación y la integridad.",
-        "network_connect":"Si alguna vez te interesa conectar, te doy la bienvenida y favorezco la oportunidad de intercambiar ideas y perspectivas. Valoro las conversaciones significativas y la oportunidad de aprender aún más de los demás, ¡así que no dudes en contactarme!"
+        "network_connect":"Si alguna vez te interesa conectar, te doy la bienvenida y favorezco la oportunidad de intercambiar ideas y perspectivas. Valoro las conversaciones significativas y la oportunidad de aprender aún más de los demás, ¡así que no dudes en contactarme!",
+        "preface_about_me":"Permítanme presentarles algo sobre mí.",
+        "values_about_me":"Además de mi experiencia técnica, valoro entornos que desafían el pensamiento, defienden principios sólidos y fomentan un trabajo impactante y significativo. Abordo los problemas de una manera creativa y pragmática, buscando no sólo construir, sino también refinar, mejorar y superar los límites."
     },
 
     "zh-cn":{
         "introduction_blueprint": "欢迎来到超越设计图的创新",
         "introduction_self": "我叫程惟恩。我是一名有抱负的电气和计算机工程师和我高度重视独创性、决心和正直。",
-        "network_connect": "如果你有兴趣交流，我非常欢迎并鼓励这个机会来分享想法和见解。我珍惜有意义的对话，也期待向他人学习更多，随时欢迎联系！"
+        "network_connect": "如果你有兴趣交流，我非常欢迎并鼓励这个机会来分享想法和见解。我珍惜有意义的对话，也期待向他人学习更多，随时欢迎联系！",
+        "preface_about_me":"让我介绍一下我的一些情况。",
+        "values_about_me":"除了技术能力之外，我很看重那些能激发思考、坚持原则，并鼓励有意义、有影响力工作的环境。我用创造性和务实的方式来解决问题，不只是为了完成，更希望不断打磨、提升，甚至突破边界。"
     }
 }

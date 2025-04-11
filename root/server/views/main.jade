@@ -15,7 +15,7 @@ html(lang="en")
     body.body_main#body_main
         header
             div.taskbar_container
-                nav 
+                nav
                     ul 
                         li.taskbar_text 
                             a(href="#projects_page") Projects
@@ -48,26 +48,6 @@ html(lang="en")
                         div.flex_item#projects
                             h2 
                                 a(class="title" href="#projects_page") Projects
-                    div.container_item#block_main_2
-                        div.flex_item#portrait
-                            img(id="photo_me", src="../assets/Grad_pic.png", alt="Professional Portfolio Photo")
-                        div.flex_item#connect
-                            p.translatable_text#network_connect.
-                                If you're ever interested in connecting, I welcome and encourage the opportunity to exchange ideas 
-                                and insights. I value meaningful conversation and the chance to learn even more from others, 
-                                so feel free to reach out!
-                            button(type="button", class="connect_button")
-                                a(href="#connect_page", class="connect_button") CONNECT!
-                            div
-                                ul 
-                                    li Linkedin
-                                    li Github
-                                    li Email
-                    div.container_item#block_main_3
-                        div.flex_item#time
-                            p#time_zone 14:55
-                        div.flex_item#about_me
-                            p#intro_test Let me introduce a little something about me.
                             p.
                                 I am from California with a strong interest in robotics, 
                                 embedded systems, and software development. Some languages I have
@@ -78,7 +58,34 @@ html(lang="en")
                                 li Risc-V 
                                 li SQL
                                 li Python 
-                            p.
+                    div.container_item#block_main_2
+                        div.flex_item#portrait
+                            img(id="photo_me", src="../assets/Grad_pic.png", alt="Professional Portfolio Photo")
+                        div.flex_item#connect
+                            p.translatable_text#network_connect.
+                                If you're ever interested in connecting, I welcome and encourage the opportunity to exchange ideas 
+                                and insights. I value meaningful conversation and the chance to learn even more from others, 
+                                so feel free to reach out!
+                            div.logo_wrapper
+                                ul.logo_container
+                                    li
+                                        a(href="https://www.linkedin.com/in/alfredochavez0406")
+                                            img(class="main_menu_logo_item", src="../assets/in-logo/LI-In-Bug.png",alt="Linkedin Logo Link")
+                                    li
+                                        a(href="")
+                                            img(class="main_menu_logo_item", src="../assets/resume.svg",alt="Resume Logo Link")
+                                    li
+                                        a(href="https://github.com/achavez1412")
+                                            img(class="main_menu_logo_item", src="../assets/github-mark/github-mark.png",alt="Github Logo Link")
+                            button(type="button", class="connect_button")
+                                a(href="#connect_page", class="connect_button") CONNECT!
+
+                    div.container_item#block_main_3
+                        div.flex_item#time
+                            p#time_zone 14:55
+                        div.flex_item#about_me
+                            p.translatable_text#preface_about_me Let me introduce a little something about me.
+                            p.translatable_text#values_about_me.
                                 Aside from technical expertise, I value environments that challenge thought, 
                                 uphold strong principles, and encourage impactful, meaningful work. I 
                                 approach problems in a creative and pragmatic way, seeking to not only build, 
@@ -87,49 +94,54 @@ html(lang="en")
                                 When I am not working, I am enjoying the small things in life. I am a huge 
                                 supporter in being grateful for the experiences in our daily lives. However, 
                                 nature is the best place to be!
-            section.cards#formatting_block
-                section.card#projects_page
-                    div.card_inner
-                        h2.bulletpoint EECS149: Payload It Forward
-                        img(id="eecs149_poster", src="../assets/EECS149 Final Poster_ .svg", alt="Final Class Poster for Embedded Device Project")
-                        ul
-                            li The goal of this project was to be able to create an initial prototype for a testbed that is able to backhaul data through a data mule using BLE and WIFI to a server of some kind.
-                            li With the myriad of events that occurred, the initial vision for the project underwent multiple iterations, whilst still accomplishing a core portion that identifies the project, upholding the design process.
-                    div.card_inner
-                        h2.bulletpoint CS160: BANDO #[br] The Music and Community Events App
-                        img(id="cs160_front", src="../assets/CS160_bando_intro.svg", alt="Cover Page for Music Community Events App")
-                        img(id="cs160_fid_pt3", src="../assets/CS160_bando_high_fid_pt3.svg", alt="An example of high fidelity wireframes of a segment of the application")
-                        ul
-                            li The goal of this project was to demonstrate the UX/UI lifecycle from conception to production.
-                            li A snippet is shown that exemplifies a portion of the design process where wireframes were developed.
-                section.card#connect_page
-                    h2.card_title Let's Connect! Feel Free to Leave Your Information for New Experiences!
-                    div.logo_container
-                        div.logo_item
-                            a(href="")
-                                img(id="logo_github", class="contact_logo", src="../assets/day_theme_river_scenery.png", alt="Github Portfolio Link")
-                        div.logo_item
-                            a(href="")
-                                img(id="logo_linkedin", class="contact_logo", src="../assets/night_shadow_range.png", alt="Linkedin Portfolio Link")
-                        div.logo_item
-                            a(href="")
-                                img(id="logo_resume", class="contact_logo", src="../assets/japanese_garden_brush.png", alt="Resume Portfolio Link")
-                    div.submit_content
-                        form(action="" class="needs-validation" id="submission" nonvalidate)
-                            div.submit_row
+            section.cards.formatting_block
+                div.card_format
+                    section.card#projects_page
+                        div.card_inner
+                            h2.bulletpoint EECS149: Payload It Forward
+                            img(id="eecs149_poster", src="../assets/EECS149 Final Poster_ .svg", alt="Final Class Poster for Embedded Device Project")
+                            ul
+                                li The goal of this project was to be able to create an initial prototype for a testbed that is able to backhaul data through a data mule using BLE and WIFI to a server of some kind.
+                                li With the myriad of events that occurred, the initial vision for the project underwent multiple iterations, whilst still accomplishing a core portion that identifies the project, upholding the design process.
+                        div.card_inner
+                            h2.bulletpoint CS160: BANDO #[br] The Music and Community Events App
+                            img(id="cs160_front", src="../assets/CS160_bando_intro.svg", alt="Cover Page for Music Community Events App")
+                            img(id="cs160_fid_pt3", src="../assets/CS160_bando_high_fid_pt3.svg", alt="An example of high fidelity wireframes of a segment of the application")
+                            ul
+                                li The goal of this project was to demonstrate the UX/UI lifecycle from conception to production.
+                                li A snippet is shown that exemplifies a portion of the design process where wireframes were developed.
+                div.card_format    
+                    section.card#connect_page
+                        h2.card_title Let's Connect! Feel Free to Leave Your Information for New Experiences!
+                        div.logo_container
+                            div.logo_item
+                                a(href="https://github.com/achavez1412")
+                                    img(id="logo_github", class="contact_logo", src="../assets/GitHub-Logos/GitHub_Logo.png", alt="Github Portfolio Link")
+                            div.logo_item
+                                a(href="")
+                                    img(id="logo_resume", class="contact_logo", src="../assets/resume.svg", alt="Resume Portfolio Link")
+                            div.logo_item
+                                a(href="https://www.linkedin.com/in/alfredochavez0406")
+                                    img(id="logo_linkedin", class="contact_logo", src="../assets/linkedin-logo/LI-Logo.png", alt="Linkedin Portfolio Link")
+                        div.submit_content
+                            form(action="" class="needs-validation" id="submission" nonvalidate)
+                                div.submit_row
+                                    div.submit_group
+                                        label(class="label_star", for="First Name") First Name*
+                                        input(type="text" class="", id="first_name", placeholder="First Name", name="First Name", aria-label="first_name", minlength="1", maxlength="50", required)
+                                        span(class="error_message" id="first_name_error")
+                                    div.submit_group
+                                        label(class="label_star", for="Last Name") Last Name*
+                                        input(type="text", class="", id="last_name", placeholder="Last Name", name="Last Name", aria-label="last_name", minlength="1", maxlength="100", required)
+                                        span(class="error_message", id="last_name_error")
                                 div.submit_group
-                                    label(class="label_star", for="First Name") First Name*
-                                    input(type="text" class="", id="first_name", placeholder="First Name", name="First Name", aria-label="first_name", minlength="1", maxlength="50", required)
-                                    span(class="error_message" id="first_name_error")
+                                    label(class="label_star", for="Email Address") Email Address*
+                                    input(type="email", class="", id="email_address", placeholder="Email", name="Email Address", aria-label="email_address", minlength="5", maxlength="100", required)
+                                    span(class="error_message", id="email_error")
                                 div.submit_group
-                                    label(class="label_star", for="Last Name") Last Name*
-                                    input(type="text", class="", id="last_name", placeholder="Last Name", name="Last Name", aria-label="last_name", minlength="1", maxlength="100", required)
-                                    span(class="error_message", id="last_name_error")
-                            div.submit_group
-                                label(class="label_star", for="Email Address") Email Address*
-                                input(type="email", class="", id="email_address", placeholder="Email", name="Email Address", aria-label="email_address", minlength="5", maxlength="100", required)
-                                span(class="error_message", id="email_error")
-                            div.submit_group
-                                label(class="") Short Message
-                                textarea(type="text", class="", id="short_message", placeholder="Short Message (Optional)", aria-label="message", minlength="0", maxlength="1000")
-                            button(class="", id="submission_button", type="submit") Send
+                                    label(class="") Short Message
+                                    textarea(type="text", class="", id="short_message", placeholder="Short Message (Optional)", aria-label="message", minlength="0", maxlength="1000")
+                                button(class="", id="submission_button", type="submit") Send
+
+        footer
+            p Uicons by <a href="https://www.flaticon.com/uicons">Flaticon</a>
