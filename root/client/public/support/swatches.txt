@@ -1,5 +1,16 @@
 Generation:
-   /* --clr-light-primary:#f7e5b4; */
+  
+Prev:
+    --clr-light-primary:#e3c590;
+    --clr-light-secondary:#263238;
+    --clr-light-accent100:#c4a336;
+    --clr-light-accent200:#a89660;
+    --clr-light-accent300:#728766;
+    --clr-light-accent400:#3d657a;
+    --clr-light-nav:#e9e19b;
+    --clr-light-hover:#e7944b;  
+  
+/* --clr-light-primary:#f7e5b4; */
     /* #f0cdbc 
        #3b5a76
        #e3c590

@@ -20,9 +20,10 @@ html(lang="en")
                         li.taskbar_text 
                             a(href="#projects_page") Projects
                         li.taskbar_text 
-                            a(href="#main_page") Home
+                            a(href="#main_menu_ref_square") Home
                         li.taskbar_text 
                             a(href="#connect_page") Contact
+            div#main_menu_ref_square
             div.form_container
                 form.form
                     label -- View --
@@ -40,24 +41,24 @@ html(lang="en")
                 div.container.formatting_block
                     div.container_item#block_main_1
                         div.flex_item.english_translation#introduction
-                            p.translatable_text#introduction_blueprint Welcome to Innovating Beyond the Blueprint!
+                            p.translatable_text.main_menu_title#introduction_blueprint Welcome to Innovating Beyond the Blueprint!
                             p.translatable_text#introduction_self.
                                 My name is Alfredo Chavez, and I am an aspiring Electrical Engineer 
                                 and Software Developer driven by a deep appreciation for resourcefulness, 
                                 determination, and integrity.
                         div.flex_item#projects
-                            h2 
-                                a(class="title" href="#projects_page") Projects
+                            p.main_menu_title
+                                a(class="title") Skills & Interests
                             p.
-                                I am from California with a strong interest in robotics, 
-                                embedded systems, and software development. Some languages I have
-                                experience with are:
+                                I am from California with a strong interest in Robotics, 
+                                Embedded Systems, and Software development. 
                             ul 
-                                li C 
-                                li Java 
-                                li Risc-V 
-                                li SQL
-                                li Python 
+                                li Real-Time 
+                                li State Machines
+                                li Databases
+                                li  
+                            p.
+                                Learn more about the software, languages, and technologies I have been using!
                     div.container_item#block_main_2
                         div.flex_item#portrait
                             img(id="photo_me", src="../assets/Grad_pic.png", alt="Professional Portfolio Photo")
@@ -66,15 +67,15 @@ html(lang="en")
                                 If you're ever interested in connecting, I welcome and encourage the opportunity to exchange ideas 
                                 and insights. I value meaningful conversation and the chance to learn even more from others, 
                                 so feel free to reach out!
-                            div.logo_wrapper
+                            div.logo_wrapper#main_menu_logo_wrapper
                                 ul.logo_container
-                                    li
+                                    li.main_menu_list_logo
                                         a(href="https://www.linkedin.com/in/alfredochavez0406")
                                             img(class="main_menu_logo_item", src="../assets/in-logo/LI-In-Bug.png",alt="Linkedin Logo Link")
-                                    li
-                                        a(href="")
+                                    li.main_menu_list_logo
+                                        a(href="../assets/website_portfolio_resume_v2.1.0.pdf" target="_blank")
                                             img(class="main_menu_logo_item", src="../assets/resume.svg",alt="Resume Logo Link")
-                                    li
+                                    li.main_menu_list_logo
                                         a(href="https://github.com/achavez1412")
                                             img(class="main_menu_logo_item", src="../assets/github-mark/github-mark.png",alt="Github Logo Link")
                             button(type="button", class="connect_button")
@@ -84,6 +85,8 @@ html(lang="en")
                         div.flex_item#time
                             p#time_zone 14:55
                         div.flex_item#about_me
+                            p.main_menu_title 
+                                    a(class="title") About Me
                             p.translatable_text#preface_about_me Let me introduce a little something about me.
                             p.translatable_text#values_about_me.
                                 Aside from technical expertise, I value environments that challenge thought, 
@@ -98,13 +101,13 @@ html(lang="en")
                 div.card_format
                     section.card#projects_page
                         div.card_inner
-                            h2.bulletpoint EECS149: Payload It Forward
+                            h2#bulletpoint EECS149: Payload It Forward
                             img(id="eecs149_poster", src="../assets/EECS149 Final Poster_ .svg", alt="Final Class Poster for Embedded Device Project")
                             ul
                                 li The goal of this project was to be able to create an initial prototype for a testbed that is able to backhaul data through a data mule using BLE and WIFI to a server of some kind.
                                 li With the myriad of events that occurred, the initial vision for the project underwent multiple iterations, whilst still accomplishing a core portion that identifies the project, upholding the design process.
                         div.card_inner
-                            h2.bulletpoint CS160: BANDO #[br] The Music and Community Events App
+                            h2#bulletpoint CS160: BANDO #[br] The Music and Community Events App
                             img(id="cs160_front", src="../assets/CS160_bando_intro.svg", alt="Cover Page for Music Community Events App")
                             img(id="cs160_fid_pt3", src="../assets/CS160_bando_high_fid_pt3.svg", alt="An example of high fidelity wireframes of a segment of the application")
                             ul
@@ -113,16 +116,17 @@ html(lang="en")
                 div.card_format    
                     section.card#connect_page
                         h2.card_title Let's Connect! Feel Free to Leave Your Information for New Experiences!
-                        div.logo_container
-                            div.logo_item
-                                a(href="https://github.com/achavez1412")
-                                    img(id="logo_github", class="contact_logo", src="../assets/GitHub-Logos/GitHub_Logo.png", alt="Github Portfolio Link")
-                            div.logo_item
-                                a(href="")
-                                    img(id="logo_resume", class="contact_logo", src="../assets/resume.svg", alt="Resume Portfolio Link")
-                            div.logo_item
-                                a(href="https://www.linkedin.com/in/alfredochavez0406")
-                                    img(id="logo_linkedin", class="contact_logo", src="../assets/linkedin-logo/LI-Logo.png", alt="Linkedin Portfolio Link")
+                        div.logo_wrapper#contact_logo_wrapper
+                            ul.logo_container
+                                li.list_item
+                                    a(href="https://www.linkedin.com/in/alfredochavez0406")
+                                        img(id="logo_linkedin", class="contact_logo", src="../assets/linkedin-logo/LI-Logo.png", alt="Linkedin Portfolio Link")
+                                li.list_item
+                                    a(href="../assets/website_portfolio_resume_v2.1.0.pdf" target="_blank")
+                                        img(id="logo_resume", class="contact_logo", src="../assets/resume.svg", alt="Resume Portfolio Link")
+                                li.list_item
+                                    a(href="https://github.com/achavez1412")
+                                        img(id="logo_github", class="contact_logo", src="../assets/GitHub-Logos/GitHub_Logo.png", alt="Github Portfolio Link")
                         div.submit_content
                             form(action="" class="needs-validation" id="submission" nonvalidate)
                                 div.submit_row
@@ -143,5 +147,5 @@ html(lang="en")
                                     textarea(type="text", class="", id="short_message", placeholder="Short Message (Optional)", aria-label="message", minlength="0", maxlength="1000")
                                 button(class="", id="submission_button", type="submit") Send
 
-        footer
-            p Uicons by <a href="https://www.flaticon.com/uicons">Flaticon</a>
+        //- footer
+        //-     p Uicons by <a href="https://www.flaticon.com/uicons">Flaticon</a>
