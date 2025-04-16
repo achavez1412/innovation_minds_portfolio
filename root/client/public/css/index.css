@@ -26,7 +26,7 @@ html{
     --fs-txt-sm: 1rem;
     --fs-txt-mini:.75rem;
 
-    --fs-txt-header-main-m:1.5rem;
+    --fs-txt-header-main-m:1.2rem;
     --fs-txt-header-main-l:2rem;
 
     --clr-alert:var(--clr-primary);
@@ -190,7 +190,7 @@ nav li:hover{
     color:var(--clr-hover-tint);
 }
 
-#main_menu_ref_square{
+.ref_square{
     height: .25px;
     width:.25px;
 }
@@ -274,7 +274,7 @@ nav li:hover{
 
 #block_main_1{
     display: grid;
-    grid-template-rows:1fr 2fr;
+    grid-template-rows:4fr 7fr;
     gap:1rem;
     height:100%;
 }
@@ -517,8 +517,8 @@ nav li:hover{
     border-radius: 25px;
     box-shadow: 0 0 30px rgba(0,0,0,0.2);
     background-color: var(--clr-accent100); 
-    width:50%;
-    height: 50%;
+    width:55%;
+    height: 35%;
     align-items: center;
 }
 

@@ -18,12 +18,12 @@ html(lang="en")
                 nav
                     ul 
                         li.taskbar_text 
-                            a(href="#projects_page") Projects
+                            a(href="#projects_ref_square") Projects
                         li.taskbar_text 
                             a(href="#main_menu_ref_square") Home
                         li.taskbar_text 
                             a(href="#connect_page") Contact
-            div#main_menu_ref_square
+            div.ref_square#main_menu_ref_square
             div.form_container
                 form.form
                     label -- View --
@@ -48,17 +48,17 @@ html(lang="en")
                                 determination, and integrity.
                         div.flex_item#projects
                             p.main_menu_title
-                                a(class="title") Skills & Interests
+                                a(class="title") Technical Proficiencies & Interests
                             p.
                                 I am from California with a strong interest in Robotics, 
-                                Embedded Systems, and Software development. 
+                                Embedded Systems, and Software development. Some technical proficiencies include:
                             ul 
-                                li Real-Time 
-                                li State Machines
-                                li Databases
-                                li  
+                                li Real-Time Embedded Software Development
+                                li Database Transactional Systems
+                                li Signal Processing
+                                li Engineering Design
                             p.
-                                Learn more about the software, languages, and technologies I have been using!
+                                Learn more about the Software, Languages, and Technologies that I have been using inside my Resume!
                     div.container_item#block_main_2
                         div.flex_item#portrait
                             img(id="photo_me", src="../assets/Grad_pic.png", alt="Professional Portfolio Photo")
@@ -82,11 +82,12 @@ html(lang="en")
                                 a(href="#connect_page", class="connect_button") CONNECT!
 
                     div.container_item#block_main_3
-                        div.flex_item#time
-                            p#time_zone 14:55
+                        div.flex_item#date_time
+                            div#time
+                            div#date
                         div.flex_item#about_me
-                            p.main_menu_title 
-                                    a(class="title") About Me
+                            p.main_menu_title.
+                                    About Me
                             p.translatable_text#preface_about_me Let me introduce a little something about me.
                             p.translatable_text#values_about_me.
                                 Aside from technical expertise, I value environments that challenge thought, 
@@ -97,6 +98,7 @@ html(lang="en")
                                 When I am not working, I am enjoying the small things in life. I am a huge 
                                 supporter in being grateful for the experiences in our daily lives. However, 
                                 nature is the best place to be!
+            div.ref_square#projects_ref_square
             section.cards.formatting_block
                 div.card_format
                     section.card#projects_page

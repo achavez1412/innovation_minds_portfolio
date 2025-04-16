@@ -1,99 +1,162 @@
 const regex_name_str = /[\p{L}]*/;
 const regex_email_str=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
+const main_body_class = ".body_main";
+const error_message_class=".error_message";
+const dark_light_mode_id = "#dark_light";
+const submission_form_id = "#submission";
+const submission_button_id = "#submission_button";
+const dark_mode_id_name = "dark_mode";
+const light_mode_id_name = "light_mode";
 
-//figure out if window load is necessary everywhere, how to restrict
-window.onload=()=>{
-    let dark_mode=localStorage.getItem('dark_mode');
-    const input_theme = document.getElementById("dark_light");
-    const body_main=document.querySelector(".body_main");
-    
-    const enableDarkMode=()=>{
-        body_main.classList.remove("light_mode");
-        body_main.classList.add("dark_mode");
-        localStorage.setItem("dark_mode", "active");
-    }
+//array of submission ids that are used to check validity
+const submission_validator_array = ["#first_name", "#last_name", "#email_address"];
 
-    const enableLightMode=()=>{
-        body_main.classList.remove("dark_mode");
-        body_main.classList.add("light_mode");
-        localStorage.setItem("dark_mode", null);
-    }
+const month_names = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const days_week_names = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
 
-    //implement UI behavior changes with focusing
-    //if there is a change with the dark/light mode, enable the respective theme
-    input_theme.addEventListener("change", (event)=>{
-        dark_mode = localStorage.getItem("dark_mode");
-        if(dark_mode !== "active"){
-            enableDarkMode();
+function enableMode(src_obj_id="", enabled_name="", disabled_name="", activate=null){
+    try{
+        if(arguments.length !== 4){
+            console.log("ArgumentError: Incorrect Number of Arguments");
+            throw new Error("ArgumentError: Incorrect Number of Arguments");
         }
-        else if(dark_mode === "active"){
-            enableLightMode();
+        for(let i=0; i<arguments.length; i++){
+            if(i==0 && typeof(arguments[i] === "object")||(i==3 && arguments[i]=== null)){
+                continue;
+            }
+            else{
+                if(typeof(arguments[i])!== "string" || arguments[i] === ""){
+                    console.log(`ArgumentError: Invalid Argument ${arguments[i]}`);
+                    throw new Error("ArgumentError: Invalid Argument");
+                }
+            }
         }
+
+        $(src_obj_id).removeClass(disabled_name);
+        $(src_obj_id).addClass(enabled_name);
+        localStorage.setItem(dark_mode_id_name,activate);
+    } catch(error){
+        console.log(`We could not mode due to Error: ${error}`);
+        return;
+    }
+}
+
+function is_date_object(input_obj){
+    return input_obj instanceof Date;
+}
+
+function set_time(date_time_obj){
+    //hopefully can work with both hour formats
+    return;
+}
+
+function set_date(date_time_obj){
+    if(is_date_object(date_time_obj)){
+        $("#date").html(days_week_names[date_time_obj.getDay()] + " " + month_names[date_time_obj.getMonth()] + " " + date_time_obj.getDate() + ", " + date_time_obj.getFullYear());
+    }
+}
+
+function create_date_time(){
+    var date_time_obj = new Date();
+    // set_time(date_time_obj);
+    set_date(date_time_obj);
+}
+//returns bool for whether input is valid
+function name_email_checker(input_test,type=''){
+    if(input_test === null || typeof(input_test) !== "string" || type===''){
+        return false;
+    }
+    let temp_regex_type;
+    if(type==="name"){
+        temp_regex_type=regex_name_str;
+    } else if(type==="email"){
+        temp_regex_type=regex_email_str;
+    }else{
+        return false;
+    }
+    console.log(`Returning Check of Type: ${type} and ${input_test} with Value: ${temp_regex_type.test(input_test)}`);
+    return temp_regex_type.test(String(input_test));
+}
+
+//checks simple class and tag format
+function valid_format(element_name){
+    //todo: improve RE
+    const re_elem_str = /^[\#\.]*/;
+    return re_elem_str.test(String(element_name));
+}
+
+function name_checker(name){
+    return name_email_checker(name,"name");
+}
+
+function email_checker(email){
+    return name_email_checker(email,"email");
+}
+
+//takes in element_name and a message to send via error form
+function set_form_msg(element_name,message){
+    try{
+        if(arguments.length !== 2){
+            console.log("ArgumentError: Incorrect Number of Arguments");
+            throw new Error("ArgumentError: Incorrect Number of Arguments");
+        }
+        for(let i=0; i<arguments.length; i++){
+            if(typeof(arguments[i])!== "string" || arguments[i] === ""){
+                if(!valid_format(arguments[i])){
+                    console.log(`ArgumentError: Invalid Argument ${arguments[i]}`);
+                    throw new Error("ArgumentError: Invalid Argument");
+                }
+            }
+        }
+
+        $(element_name).html(message);
+        console.log($(element_name).html());
+        return;
+    } catch(error){
+        console.log(`We could not mode due to Error: ${error}`);
+        return;
+    }
+}
+
+//resets form(**ideally given a form id, reset all fields of form) rn only reset explicit fields
+//assumes id is proper and contains validation present
+function reset_submission_form(id){
+    $(id).removeClass("was-validated");
+    $(id)[0].reset();
+    $(submission_button_id).prop("disabled",true);
+    $(error_message_class).each(function(){
+        $("#"+String(this.id)).html("");
     });
+}
 
-    //enable whatever mode is marked
-    if(dark_mode === "active"){
-        input_theme.value = "dark_mode";
-        enableDarkMode();
-    } else{
-        input_theme.value = "light_mode";
-        enableLightMode();
-    }
-};
-
+function submission_checker(submission_tag){
+    console.log("understood", submission_tag);
+    alert("Your submission has been recorded!");
+    reset_submission_form(submission_tag);
+}
+//look into load rather than ready
 //check for alternatives for $(document).ready bc deprecated and ignored by JQ3.0.0
 $(document).ready(()=>{
-   //disable submission process default
-   $("#submission_button").prop("disabled",true);
-
-    //checks simple class and tag format
-    const valid_format=(element_name)=>{
-        //todo: improve RE
-        const re_elem_str = /^[\#\.]*/;
-        return re_elem_str.test(String(element_name));
+    var dark_mode = localStorage.getItem(dark_mode_id_name);
+    const input_theme = $(dark_light_mode_id);
+    const body_main = $(main_body_class);
+    
+    //disable submission process button default
+    $("#submission_button").prop("disabled",true);
+    if(dark_mode === "active"){
+        input_theme.val(dark_mode_id_name);
+        enableMode(body_main,dark_mode_id_name,light_mode_id_name,"active");
+    } else{
+        input_theme.val(light_mode_id_name);
+        enableMode(body_main,light_mode_id_name,dark_mode_id_name,null);
     }
 
-    //takes in element_name and a message to send via error form
-    const set_form_msg=(element_name,message)=>{
-        if(typeof(element_name) === "string" && typeof(message)==="string"){
-            if(!valid_format(element_name)){
-                return;
-            }
-            console.log("Inner HTML ERROR should be changed")
-            $(element_name).html(message);
-            console.log($(element_name).html());
-            return;
-        }
-    }
+    setInterval(function(){
+        create_date_time();
+    },1000);
 
-    //returns bool for whether input is valid
-    const name_email_checker=(input_test,type='')=>{
-        if(input_test === null || typeof(input_test) !== "string" || type===''){
-            return false;
-        }
-        let temp_regex_type;
-        if(type="name"){
-            temp_regex_type=regex_name_str;
-        } else if(type="email"){
-            temp_regex_type=regex_email_str;
-        }else{
-            return false;
-        }
-        console.log(`Returning Check of Type: ${type} and ${input_test} with Value: ${temp_regex_type.test(input_test)}`);
-        return temp_regex_type.test(String())
-    };
-
-    const name_checker=(name)=>{
-        return name_email_checker(name,"name");
-    }
-
-    const email_checker=(email)=>{
-        return name_email_checker(email,"email");
-    }
-
-    //checks parameters(hard-coded)
-    //TODO modularize to 
+    //checks parameters(hard-coded) //TODO modularize to 
     const valid_elem_all=()=>{
         let first_name = $("#first_name")[0].checkValidity();
         let last_name = $("#last_name")[0].checkValidity();
@@ -106,31 +169,6 @@ $(document).ready(()=>{
             $("#submission_button").prop("disabled",true);
             console.log("only callled");
         }
-    }
-
-    //resets form(**ideally given a form id, reset all fields of form) rn only reset explicit fields
-    const reset_form=(id)=>{
-        $(id).removeClass("was-validated");
-        $(id)[0].reset();
-    }
-
-    const submission_checker=()=>{
-        let first_name = $("#first_name").val().trim();
-        let last_name = $("#last_name").val().trim();
-        let email = $("#email_address").val().trim();
-        
-        let array_iter = [first_name, last_name, email];
-        
-        for(let iter of array_iter){
-            //if none null, trim
-            if(iter == null || iter == ''){
-                //set error
-                console.log("fio");
-            }
-        }
-        console.log("understood");
-        alert("Your submission has been recorded!");
-        reset_form("#submission");
     }
 
     const elem_validator=(elem,error_tag,msg_tag,msg_fail,msg_success,is_email="false")=>{
@@ -164,9 +202,18 @@ $(document).ready(()=>{
         }
         valid_elem_all();
     }
-    
 
     //====event trigger====
+    $("#dark_light").on("change", ()=>{
+        dark_mode = localStorage.getItem("dark_mode");
+        if(dark_mode !== "active"){
+            enableMode(body_main,dark_mode_id_name,light_mode_id_name,"active");
+        }
+        else if(dark_mode === "active"){
+            enableMode(body_main,light_mode_id_name,dark_mode_id_name,null);
+        }
+    });
+
     $("#language_selector").on("change", async ()=>{
         //error handling for key checking
         try{
@@ -222,8 +269,7 @@ $(document).ready(()=>{
     $("#first_name").on("focus input",()=>{
         elem_validator("#first_name","#first_name_error", "#first_name_error", "Invalid Input", "Valid Input",false);
     });
-    
-    //get this keyword to work 
+     
     $("#last_name").on("focus input",()=>{
         elem_validator("#last_name", "#last_name_error","#last_name_error", "Invalid Input", "Valid Input", false);
     });
@@ -238,45 +284,10 @@ $(document).ready(()=>{
         if(!valid_elem_all()){
             event.stopPropagation();
         }
-        submission_checker();
+        submission_checker(submission_form_id);
     });
     
 });
-
-/*$(document).ready(function () {
-        $('#myForm').bootstrapValidator({
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                email: {
-                    validators: {
-                        notEmpty: { message: 'Email is required' },
-                        emailAddress: { message: 'Invalid email' }
-                    }
-                },
-                password: {
-                    validators: {
-                        notEmpty: { message: 'Password is required' },
-                        stringLength: { min: 6, message: 'Minimum 6 characters' }
-                    }
-                }
-            }
-        });
-    }); */
-//window.onloadstart=()=>{
-//     //smooth scrolling animation 
-    // document.querySelectorAll("nav a").forEach(nav_elem => {
-    //     nav_elem.addEventListener("click", function(elem){
-    //         elem.preventDefault();
-    //         const links = document.querySelector(this.getAttribute('href'));
-    //         console.log(links);
-    //         links.scrollIntoView({behavior:'smooth'});
-    //     });
-    // });
-//};
 
 //consider enabling xmlhttpsrequest to dynamically translate webpage
 
