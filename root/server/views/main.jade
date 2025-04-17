@@ -40,25 +40,24 @@ html(lang="en")
             div.wrapper_container#main_page
                 div.container.formatting_block
                     div.container_item#block_main_1
-                        div.flex_item.english_translation#introduction
+                        div.flex_item#introduction
                             p.translatable_text.main_menu_title#introduction_blueprint Welcome to Innovating Beyond the Blueprint!
                             p.translatable_text#introduction_self.
                                 My name is Alfredo Chavez, and I am an aspiring Electrical Engineer 
                                 and Software Developer driven by a deep appreciation for resourcefulness, 
                                 determination, and integrity.
-                        div.flex_item#projects
-                            p.main_menu_title
-                                a(class="title") Technical Proficiencies & Interests
-                            p.
-                                I am from California with a strong interest in Robotics, 
-                                Embedded Systems, and Software development. Some technical proficiencies include:
-                            ul 
-                                li Real-Time Embedded Software Development
-                                li Database Transactional Systems
-                                li Signal Processing
-                                li Engineering Design
-                            p.
-                                Learn more about the Software, Languages, and Technologies that I have been using inside my Resume!
+                        div.flex_item#about_me
+                            p.main_menu_title.translatable_text#about_intro About Me
+                            p.translatable_text#preface_about_me Let me introduce a little something about me.
+                            p.translatable_text#values_about_me.
+                                Aside from technical expertise, I value environments that challenge thought, 
+                                uphold strong principles, and encourage impactful, meaningful work. I 
+                                approach problems in a creative and pragmatic way, seeking to not only build, 
+                                but to refine, enhance, and push boundaries.
+                            p.translatable_text#else_about_me.
+                                When I am not working, I am enjoying the small things in life. I am a huge 
+                                supporter in being grateful for the experiences in our daily lives. However, 
+                                nature is the best place to be!
                     div.container_item#block_main_2
                         div.flex_item#portrait
                             img(id="photo_me", src="../assets/Grad_pic.png", alt="Professional Portfolio Photo")
@@ -79,39 +78,46 @@ html(lang="en")
                                         a(href="https://github.com/achavez1412")
                                             img(class="main_menu_logo_item", src="../assets/github-mark/github-mark.png",alt="Github Logo Link")
                             button(type="button", class="connect_button")
-                                a(href="#connect_page", class="connect_button") CONNECT!
+                                a(href="#connect_page", class="connect_button translatable_text" id="connect_button") CONNECT!
 
                     div.container_item#block_main_3
                         div.flex_item#date_time
                             div#time
                             div#date
-                        div.flex_item#about_me
-                            p.main_menu_title.
-                                    About Me
-                            p.translatable_text#preface_about_me Let me introduce a little something about me.
-                            p.translatable_text#values_about_me.
-                                Aside from technical expertise, I value environments that challenge thought, 
-                                uphold strong principles, and encourage impactful, meaningful work. I 
-                                approach problems in a creative and pragmatic way, seeking to not only build, 
-                                but to refine, enhance, and push boundaries.
+                        div.flex_item#projects
+                            p.main_menu_title.translatable_text#skills_title
+                                a(class="title") Technical Proficiencies & Interests
+                            p.translatable_text#intro_skills.
+                                I am from California with a strong interest in Robotics, 
+                                Embedded Systems, and Software development. A few Technical Proficiencies include:
+                            ul 
+                                li.translatable_text#item1_skills Real-Time Embedded Software Development
+                                li.translatable_text#item2_skills Database Management Systems
+                                li.translatable_text#item3_skills Signal Processing
+                                li.translatable_text#item4_skills Engineering Design and Prototyping
                             p.
-                                When I am not working, I am enjoying the small things in life. I am a huge 
-                                supporter in being grateful for the experiences in our daily lives. However, 
-                                nature is the best place to be!
+                                Learn more about the Software, Languages, and Technologies that I have been using inside my Resume!
             div.ref_square#projects_ref_square
             section.cards.formatting_block
                 div.card_format
                     section.card#projects_page
                         div.card_inner
-                            h2#bulletpoint EECS149: Payload It Forward
+                            p.card_title.card_header EECS149: Payload It Forward
                             img(id="eecs149_poster", src="../assets/EECS149 Final Poster_ .svg", alt="Final Class Poster for Embedded Device Project")
                             ul
                                 li The goal of this project was to be able to create an initial prototype for a testbed that is able to backhaul data through a data mule using BLE and WIFI to a server of some kind.
                                 li With the myriad of events that occurred, the initial vision for the project underwent multiple iterations, whilst still accomplishing a core portion that identifies the project, upholding the design process.
+                div.card_format    
+                    section.card    
                         div.card_inner
-                            h2#bulletpoint CS160: BANDO #[br] The Music and Community Events App
+                            p.card_title.card_header CS160: BANDO #[br] The Music and Community Events App
                             img(id="cs160_front", src="../assets/CS160_bando_intro.svg", alt="Cover Page for Music Community Events App")
                             img(id="cs160_fid_pt3", src="../assets/CS160_bando_high_fid_pt3.svg", alt="An example of high fidelity wireframes of a segment of the application")
+                            ul 
+                                li Scope:
+                                li Role: 
+                                li Technologies:
+
                             ul
                                 li The goal of this project was to demonstrate the UX/UI lifecycle from conception to production.
                                 li A snippet is shown that exemplifies a portion of the design process where wireframes were developed.

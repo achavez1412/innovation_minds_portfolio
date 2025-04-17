@@ -9,9 +9,25 @@ const submission_button_id = "#submission_button";
 const dark_mode_id_name = "dark_mode";
 const light_mode_id_name = "light_mode";
 
+//TODO: provide comment for function description
+
 //array of submission ids that are used to check validity
 const submission_validator_array = ["#first_name", "#last_name", "#email_address"];
 
+const time_options = {
+    hour:"2-digit",
+    minute:"2-digit",
+    second:"2-digit",
+    timeZoneName:"short",
+    hour12:false,
+}
+
+const date_options = {
+    weekday:"short",
+    month:"long",
+    day:"2-digit",
+    year:"numeric"
+}
 const month_names = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const days_week_names = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
 
@@ -48,12 +64,16 @@ function is_date_object(input_obj){
 
 function set_time(date_time_obj){
     //hopefully can work with both hour formats
+    if(is_date_object(date_time_obj)){
+        $("#time").html(date_time_obj.toLocaleTimeString($("#language_selector").val(),time_options));
+    }
     return;
 }
 
 function set_date(date_time_obj){
     if(is_date_object(date_time_obj)){
-        $("#date").html(days_week_names[date_time_obj.getDay()] + " " + month_names[date_time_obj.getMonth()] + " " + date_time_obj.getDate() + ", " + date_time_obj.getFullYear());
+        // $("#date").html(days_week_names[date_time_obj.getDay()] + " " + month_names[date_time_obj.getMonth()] + " " + date_time_obj.getDate() + ", " + date_time_obj.getFullYear());
+        $("#date").html(date_time_obj.toLocaleDateString($("#language_selector").val(),date_options));
     }
 }
 
@@ -61,6 +81,7 @@ function create_date_time(){
     var date_time_obj = new Date();
     // set_time(date_time_obj);
     set_date(date_time_obj);
+    set_time(date_time_obj);
 }
 //returns bool for whether input is valid
 function name_email_checker(input_test,type=''){
@@ -97,6 +118,7 @@ function email_checker(email){
 //takes in element_name and a message to send via error form
 function set_form_msg(element_name,message){
     try{
+        //TODO:try thinking about wrapping into function to encapsulate logic check
         if(arguments.length !== 2){
             console.log("ArgumentError: Incorrect Number of Arguments");
             throw new Error("ArgumentError: Incorrect Number of Arguments");
