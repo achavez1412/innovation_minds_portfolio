@@ -10,7 +10,7 @@ html(lang="en")
         link(rel="stylesheet", href="/css/index.css", type="text/css")
         
         script(src="/jquery/jquery.min.js")
-        script(src="/js/ajax_language.js")
+        script(src="/js/ajax_calls.js")
         script(src="/js/js_scripts.js")
     body.body_main#body_main
         header
@@ -136,23 +136,23 @@ html(lang="en")
                                     a(href="https://github.com/achavez1412")
                                         img(id="logo_github", class="contact_logo", src="../assets/GitHub-Logos/GitHub_Logo.png", alt="Github Portfolio Link")
                         div.submit_content
-                            form(action="" class="needs-validation" id="submission" nonvalidate)
+                            form(action="" class="needs-validation" id="submission" novalidate)
                                 div.submit_row
                                     div.submit_group
                                         label(class="label_star", for="First Name") First Name*
-                                        input(type="text" class="", id="first_name", placeholder="First Name", name="First Name", aria-label="first_name", minlength="1", maxlength="50", required)
+                                        input(type="text" class="", id="first_name", placeholder="First Name", name="first_name", aria-label="first_name", minlength="1", maxlength="50", required)
                                         span(class="error_message" id="first_name_error")
                                     div.submit_group
                                         label(class="label_star", for="Last Name") Last Name*
-                                        input(type="text", class="", id="last_name", placeholder="Last Name", name="Last Name", aria-label="last_name", minlength="1", maxlength="100", required)
+                                        input(type="text", class="", id="last_name", placeholder="Last Name", name="last_name", aria-label="last_name", minlength="1", maxlength="100", required)
                                         span(class="error_message", id="last_name_error")
                                 div.submit_group
                                     label(class="label_star", for="Email Address") Email Address*
-                                    input(type="email", class="", id="email_address", placeholder="Email", name="Email Address", aria-label="email_address", minlength="5", maxlength="100", required)
+                                    input(type="email", class="", id="email_address", placeholder="Email", name="email_address", aria-label="email_address", minlength="5", maxlength="100", required)
                                     span(class="error_message", id="email_error")
                                 div.submit_group
                                     label(class="") Short Message
-                                    textarea(type="text", class="", id="short_message", placeholder="Short Message (Optional)", aria-label="message", minlength="0", maxlength="1000")
+                                    textarea(type="text", class="", id="short_message", placeholder="Short Message (Optional)", name="short_message", aria-label="message", minlength="0", maxlength="1000")
                                 button(class="", id="submission_button", type="submit") Send
 
         //- footer

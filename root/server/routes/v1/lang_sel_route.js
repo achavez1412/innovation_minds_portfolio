@@ -6,8 +6,6 @@ const lang_controller = require("../../controllers/lang_sel_controller");
 //require middlewares for which routes point to 
 const lang_middleware = require("../../middleware/language_middleware");
 
-console.log("I am getting called in router land.")
-
 //query param & middleware validator & go to controller to handle data of language selection under the GET request
 lang_router.get("/language", lang_middleware.lang_validator, lang_controller.get_lang_option);
 

@@ -22,4 +22,24 @@ const get_all_language_option=(language_option)=>{
     });    
 };
 
-//TODO:define api fgor submission
+//TODO:define api for submission ; consider async due to simulated load when posting
+const post_all_submission_form=(submission_data)=>{
+    return new Promise((resolve, reject)=>{
+        $.ajax({
+            url:"api/routes/v1/submission",
+            type:"POST",
+            data:JSON.stringify(submission_data),
+            contentType: "application/json",
+            success: function(response){
+                console.log(response);
+                resolve(response);
+            },
+            error: function(xhr, status, error){
+                console.log(xhr);
+                console.log(status);
+                console.log(error);
+                reject(error);
+            }
+        });
+    });
+};

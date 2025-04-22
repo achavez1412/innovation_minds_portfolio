@@ -28,6 +28,9 @@ const date_options = {
     day:"2-digit",
     year:"numeric"
 }
+
+const submission_fields_arr = ["first_name", "last_name", "email_address", "short_message"];
+
 const month_names = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const days_week_names = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
 
@@ -179,7 +182,7 @@ $(document).ready(()=>{
     },1000);
 
     //checks parameters(hard-coded) //TODO modularize to 
-    const valid_elem_all=()=>{
+    const valid_elem_all=(has_short_message=false)=>{
         let first_name = $("#first_name")[0].checkValidity();
         let last_name = $("#last_name")[0].checkValidity();
         let email = $("#email_address")[0].checkValidity();
@@ -187,9 +190,11 @@ $(document).ready(()=>{
         if(first_name && last_name && email){
             $("#submission_button").prop("disabled",false);
             console.log("called and Checked");
+            return true;
         }else{
             $("#submission_button").prop("disabled",true);
             console.log("only callled");
+            return false;
         }
     }
 
@@ -301,12 +306,46 @@ $(document).ready(()=>{
     });
 
     //event listener if button is submitted (event has to be listened through the form, not elements itself)
-    $("#submission").on("submit",(event)=>{
-        event.preventDefault();
-        if(!valid_elem_all()){
-            event.stopPropagation();
+    $(submission_form_id).on("submit", async(event)=>{
+        //error handling for key checking
+        try{
+            event.preventDefault();
+            //create into function if time
+            let has_short_message = ($(this).find('[name="short_message"]').val() !== "") ? true : false;
+            if(!valid_elem_all(has_short_message)){
+                event.stopPropagation();
+                throw new Error("Format Error: Required Fields Need to be Filled");
+            }
+            
+            //check all elements are valid, assume all values are strings and format
+            let json_submisson_obj = {};
+            console.log(`this is the short_message status: ${$(submission_form_id)}`);
+            const form = $("#submission");
+            const submission_form = new FormData(form);
+            console.log(`this is the submission form: ${submission_form}`);
+            for(let [key,value] of submission_form.entries()){
+                if(!(key in submission_fields_arr)){
+                    throw new Error("Format Error: Missing Fields");
+                }
+                if(typeof(value) !== "string"){
+                    throw new Error("Type Error: Improper Formatting");
+                }
+                //start to create json object formatting
+                json_submisson_obj[key] = value;
+            }
+    
+            let response_post = await post_all_submission_form(json_submisson_obj);
+            if(response_post){
+                submission_checker(submission_form_id);
+            } else{
+                //alert(error)
+                throw new Error("Server Error: An Error Occurred in Submission");
+            }
+            
+        } catch(error){
+            console.log(`We could not process the submission due to Error: ${error}`);
+            return;
         }
-        submission_checker(submission_form_id);
     });
     
 });
