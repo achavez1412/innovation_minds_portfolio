@@ -36,6 +36,8 @@ const submission_validator=(req,res,next)=>{
                 res.status(400).json({error:"FormatError: Required Fields Must Be Filled"})
             }
         }
+
+        console.log("SOURCE:MIDDLEWARE --- Request has been Validated by Submission_Validator");
         next();
     } catch(error){
         console.log(error);

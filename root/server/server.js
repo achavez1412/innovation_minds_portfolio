@@ -27,7 +27,7 @@ app.use('/jquery', express.static(path.join(__dirname,"../client","node_modules"
 //==== MOUNTING ====
 //mount routers to main app
 app.use("/api/routes/v1/", v1_lang_router);
-app.use("api/routes/v1/",v1_submission_form_router);
+app.use("/api/routes/v1/",v1_submission_form_router);
 
 
 //initialize route towards app main default '/'

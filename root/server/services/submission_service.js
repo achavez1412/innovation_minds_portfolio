@@ -2,7 +2,7 @@
 const submission_connector = require("../database/submission_db.js");
 
 //return bool
-const post_data = (data)=>{
+const post_data=(data)=>{
     try{
         submission_connector.post_entries(data)
         return true;

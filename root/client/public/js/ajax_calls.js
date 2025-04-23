@@ -29,6 +29,7 @@ const post_all_submission_form=(submission_data)=>{
             url:"api/routes/v1/submission",
             type:"POST",
             data:JSON.stringify(submission_data),
+            dataType:"json",
             contentType: "application/json",
             success: function(response){
                 console.log(response);

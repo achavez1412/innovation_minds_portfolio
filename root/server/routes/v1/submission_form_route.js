@@ -7,6 +7,7 @@ const submit_controller = require("../../controllers/submission_controller");
 const submit_middleware = require("../../middleware/submission_middleware");
 
 //request? query or? will validate fields that have been sent before sending to controller to perform logic 
+console.log("SOURCE:ROUTER --- ABOUT TO DIRECT TOWARDS MIDDLEWARE");
 submit_router.post("/submission", submit_middleware.submission_validator, submit_controller.post_submission_fields);
 
 module.exports = submit_router;

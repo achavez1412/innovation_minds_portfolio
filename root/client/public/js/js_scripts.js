@@ -319,12 +319,12 @@ $(document).ready(()=>{
             
             //check all elements are valid, assume all values are strings and format
             let json_submisson_obj = {};
-            console.log(`this is the short_message status: ${$(submission_form_id)}`);
-            const form = $("#submission");
+            const form = $('#submission')[0];
+            console.log(form);
             const submission_form = new FormData(form);
-            console.log(`this is the submission form: ${submission_form}`);
             for(let [key,value] of submission_form.entries()){
-                if(!(key in submission_fields_arr)){
+                console.log(`[${String(key) in submission_fields_arr},${value}]`)
+                if(!(submission_fields_arr.includes(key))){
                     throw new Error("Format Error: Missing Fields");
                 }
                 if(typeof(value) !== "string"){
