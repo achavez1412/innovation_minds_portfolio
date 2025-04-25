@@ -30,4 +30,4 @@ const form_schema = new mongoose.Schema({
     }
 },{timestamps:true});
 
-module.exports = mongoose.model("form", form_schema);
+module.exports = mongoose.model("contacts_db", form_schema);

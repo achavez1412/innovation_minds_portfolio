@@ -319,7 +319,9 @@ $(document).ready(()=>{
             
             //check all elements are valid, assume all values are strings and format
             let json_submisson_obj = {};
-            const form = $('#submission')[0];
+            const form = $(submission_form_id)[0];
+            //const form_id = $(submission).get(); 
+            //better to get val directly instead of whole object [0] bc reduces DOM overhead
             console.log(form);
             const submission_form = new FormData(form);
             for(let [key,value] of submission_form.entries()){

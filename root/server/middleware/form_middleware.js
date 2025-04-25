@@ -5,7 +5,20 @@ const required_optional_fields = {
     short_message:["string","optional"]
 };
 const field_length = 4;
-const form_validator =(res,req,next)=>{
+
+//create enum file with all variable operations perhaps config
+//look into examples about enum usage
+
+function authentication_form_access(action){
+    //authnentication
+    if(false){
+        res.status(401).json({error:`Unauthorized ${action} Access`});
+        return false;
+    }
+    return true;
+}
+
+const form_validator =(req,res,next)=>{
     try{
         if(!req.body){
             res.status(400).json({error:"Object Error: Request Body Required"});
@@ -39,5 +52,37 @@ const form_validator =(res,req,next)=>{
     }
 };
 
+const read_all_contacts_validator=(req,res,next)=>{
+    try{
+        //some form of authorization check for admin user
+        authentication_form_access("Read");
+        //limit checks for reading users
+        next();
+    } catch(error){
+        console.log(`Error: ${error}`);
+    }
+    
+};  
 
-module.exports={form_validator,};
+const update_one_contact_validator=(req,res,next)=>{
+    try{
+        authentication_form_access("Update");
+        next();
+    } catch(error){
+        console.log(`Error: ${error}`);
+    }
+}
+const delete_one_contact_validator=(req,res,next)=>{
+    try{
+        authentication_form_access("Delete");
+        next();
+    } catch(error){
+        console.log(`Error: ${error}`);
+    }
+}
+module.exports={
+    form_validator,
+    read_all_contacts_validator,
+    update_one_contact_validator,
+    delete_one_contact_validator
+};
