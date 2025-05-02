@@ -4,6 +4,7 @@ const form_schema = new mongoose.Schema({
     first_name: {
         type: String,
         required:true,
+        unique: false,
         minLength:1,
         maxLength:50,
         trim:true
@@ -11,6 +12,7 @@ const form_schema = new mongoose.Schema({
     last_name: {
         type: String,
         required:true,
+        unique:false,
         minLength:1,
         maxLength:100,
         trim:true
@@ -18,6 +20,7 @@ const form_schema = new mongoose.Schema({
     email_address: {
         type: String,
         required:true,
+        unique:true,
         minLength:5,
         maxLength:100,
         trim:true
@@ -25,6 +28,7 @@ const form_schema = new mongoose.Schema({
     short_message: {
         type:String,
         required: false,
+        unique: false,
         minLength:0,
         maxLength:1000
     }
