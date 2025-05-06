@@ -523,6 +523,14 @@ nav{
     width:40rem;
 }
 
+.form-control{
+    height:3rem;
+    position:relative;
+    /* align-items: center; */
+    /* justify-content: center; */
+
+}
+
 #submission{
     justify-items: center;
     align-content: center;
@@ -536,8 +544,8 @@ nav{
     font-weight: var(--fw-txt-mini);
     color:var(--clr-alert);
     justify-content: center;
-    padding: 0;
-    margin:0 auto;
+    /* padding: 0; */
+    /* margin:0 auto; */
 }
 
 #short_message{
@@ -618,14 +626,14 @@ nav{
     .submit_row{
         width: 100%;
         display: flex;
-        align-items: center;
+        /* align-items: center; */
         gap:4rem;
     }
 
     .submit_group{
         width:100%;
         position: relative;
-        align-items: center;
+        /* align-items: center; */
         justify-content: center;
         min-height: 1rem;
     }

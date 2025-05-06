@@ -9,67 +9,58 @@ const create_one_contact= async(body)=>{
         console.log("This are the fields:", first_name, last_name, email_address,short_message);
         const form_data = new form({first_name,last_name,email_address,short_message});
         await form_data.save(); //difference to the $set, upsert:true option
-        return true, {};
+        return true;
     } catch(error){
-        console.log(error.message);
-        return false, {};
+        console.log(error);
+        return false;
     }
 };
 
 //all  contacts
 const read_all_contacts= async ()=>{
     try{
-        let data = form.find();
-        return true,data;
+        const data_response = await form.find({},{_id:0,first_name:1,last_name:1,email_address:1,short_message:1});
+        const success= true;
+        console.log("Values here from service GET: ", success, data_response);
+        return {success, data_response};
     } catch(error){
         console.log(error);
-        return false,{};
+        return {success: false, data_response: {}};
     }
 };
 
 //update the information of a form that has been submitted; 
 //strictly overwrites and does not handle collisions, as unique entries would have been made
-const update_one_contact= async (body)=>{
+const update_one_contact= async (id_name,body)=>{
     try{
         //checks
-        
-        //query depending which field needs to be changed
-
-        //user name: W last:Q email 1234
-        //W Q 123
-        //W Q 1234
-        //al email 1234
-        const filter_query = {$or:[
-            {email_address:body.email_address},
-            {$and:[
-                {first_name:body.first_name},
-                {last_name:body.last_name}
-            ]}
-        ]};
+        const filter_query = {email_address:id_name};
         let data_to_update={};
         for(let elem in body){
-            if(body[elem] != ""){
-                data_to_update.elem = body[elem];
+            if(body[elem] != "" && id_name !== body[elem]){
+                data_to_update[elem] = body[elem];
             }
         }
+        console.log("Things to update",data_to_update);
         const content_value = {$set:data_to_update};
-        form.updateOne(filter_query,content_value);
-        return true,{};
+        await form.updateOne(filter_query,content_value);
+        return true;
     }catch(error){
         console.log(error);
-        return false,{};
+        return false;
     }
 }
 
 //currently query is determined by email given that values are unique
-const delete_one_contact= async (body) => {
+const delete_one_contact= async (id_name) => {
     try{
-        const filter_query = {email_address:body.email_address};
-        form.deleteOne(filter_query);
-        return true,{};
+        //potential check for more robust logic
+        const filter_query = {email_address:id_name};
+        await form.deleteOne(filter_query);
+        return true;
     } catch(error){
         console.log(error);
-        return false, {};
+        return false;
     }
 }
 module.exports = {
