@@ -3,12 +3,20 @@ const regex_email_str=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 const main_body_class = ".body_main";
 const error_message_class=".error_message";
+
 const dark_light_mode_id = "#dark_light";
+const language_selector_mode_id = "#language_selector";
 const submission_form_id = "#submission";
 const submission_button_id = "#submission_button";
+const project_page_id = "#project_link";
+const home_page_id = "#home_link";
+const contact_page_id = "#contact_link";
+const contact_button_id = "#connect_button";
+
 const dark_mode_id_name = "dark_mode";
 const light_mode_id_name = "light_mode";
 
+const window_y_offset = -60;
 //TODO: provide comment for function description
 
 //array of submission ids that are used to check validity
@@ -61,6 +69,18 @@ function enableMode(src_obj_id="", enabled_name="", disabled_name="", activate=n
     }
 }
 
+//assumes the target_id is in the href 
+//gets DOM object to call reference rect and offset scroll behavior
+function href_local_scoller(event, source_id){
+    event.preventDefault();
+    const href_val = $(source_id).attr("href");
+    //$(href_val)[0].scrollIntoView();
+    const offset_ref = $(href_val)[0].getBoundingClientRect().top + window_y_offset + window.scrollY;
+    window.scrollTo({top: offset_ref, behavior: "smooth"});
+    history.replaceState(null,"",window.location.pathname);
+}
+
+
 function is_date_object(input_obj){
     return input_obj instanceof Date;
 }
@@ -86,6 +106,7 @@ function create_date_time(){
     set_date(date_time_obj);
     set_time(date_time_obj);
 }
+
 //returns bool for whether input is valid
 function name_email_checker(input_test,type=''){
     if(input_test === null || typeof(input_test) !== "string" || type===''){
@@ -231,7 +252,7 @@ $(document).ready(()=>{
     }
 
     //====event trigger====
-    $("#dark_light").on("change", ()=>{
+    $(dark_light_mode_id).on("change", ()=>{
         dark_mode = localStorage.getItem("dark_mode");
         if(dark_mode !== "active"){
             enableMode(body_main,dark_mode_id_name,light_mode_id_name,"active");
@@ -241,7 +262,7 @@ $(document).ready(()=>{
         }
     });
 
-    $("#language_selector").on("change", async ()=>{
+    $(language_selector_mode_id).on("change", async ()=>{
         //error handling for key checking
         try{
             var language_selection = $("#language_selector").val();
@@ -291,6 +312,22 @@ $(document).ready(()=>{
                 // element_id.textContent = String(language_object.data[element_id]);
             }
         });
+    });
+
+    $(project_page_id).on("click", async(event)=>{
+        href_local_scoller(event,project_page_id);
+    });
+
+    $(home_page_id).on("click", async(event)=>{
+        href_local_scoller(event,home_page_id);
+    });
+
+    $(contact_page_id).on("click", async(event)=>{
+        href_local_scoller(event,contact_page_id);
+    });
+
+    $(contact_button_id).on("click", async(event)=>{
+        href_local_scoller(event,contact_button_id);
     });
 
     $("#first_name").on("focus input",()=>{
