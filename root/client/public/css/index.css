@@ -29,6 +29,8 @@ html{
     --fs-txt-header-main-m:1.2rem;
     --fs-txt-header-main-l:2rem;
 
+    --clr-fail:#a54435;
+    --clr-pass:#518147;
     --clr-alert:var(--clr-primary);
     --clr-bkgrd:#f8f8f8;
     --clr-primary:#f8f8f8;
@@ -169,6 +171,13 @@ nav{
 .ref_square{
     height: .25px;
     width:.25px;
+}
+
+.req_submit{
+    color:var(--clr-fail);
+}
+.pass_submit{
+    color:var(--clr-pass);
 }
 
 .form_container{
@@ -480,7 +489,17 @@ nav{
     align-self: center;
     justify-content: center;
 }
-
+#snek_game_img{
+    display:inline-flex;
+    width:50%;
+    height:auto;
+    align-content:center;
+    justify-items: center;
+}
+#onehunld_game_img{
+   width:50%;
+   height:auto; 
+}
 /*.bulletpoint::before{
     counter-increment: project-num;
     content:counter(project-num) ') ';
@@ -595,7 +614,7 @@ nav{
     position: relative;
     font-size: var(--fs-txt-mini);
     font-weight: var(--fw-txt-mini);
-    color:var(--clr-alert);
+    /* color:var(--clr-alert); */
     justify-content: center;
     /* padding: 0; */
     /* margin:0 auto; */

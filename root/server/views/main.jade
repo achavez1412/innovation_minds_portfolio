@@ -102,7 +102,8 @@ html(lang="en")
                 div.card_format
                     section.card#projects_page
                         div.card_inner
-                            p.card_title.card_header EECS149: Payload It Forward
+                            p.card_title.card_header.
+                                EECS149: Payload It Forward
                             img(id="eecs149_poster", src="../assets/EECS149 Final Poster_ .svg", alt="Final Class Poster for Embedded Device Project")
                             ul
                                 li The goal of this project was to be able to create an initial prototype for a testbed that is able to backhaul data through a data mule using BLE and WIFI to a server of some kind.
@@ -110,7 +111,8 @@ html(lang="en")
                 div.card_format    
                     section.card    
                         div.card_inner
-                            p.card_title.card_header CS160: BANDO #[br] The Music and Community Events App
+                            p.card_title.card_header.
+                                CS160: BANDO #[br] The Music and Community Events App
                             img(id="cs160_front", src="../assets/CS160_bando_intro.svg", alt="Cover Page for Music Community Events App")
                             img(id="cs160_fid_pt3", src="../assets/CS160_bando_high_fid_pt3.svg", alt="An example of high fidelity wireframes of a segment of the application")
                             ul 
@@ -121,6 +123,23 @@ html(lang="en")
                             ul
                                 li The goal of this project was to demonstrate the UX/UI lifecycle from conception to production.
                                 li A snippet is shown that exemplifies a portion of the design process where wireframes were developed.
+                div.card_format
+                    section.card
+                        div.card_inner
+                            p.card_title.card_header.
+                                Stratego: A Turn-Based Multi-Fauceted Conquest Strategy Game
+                div.card_format
+                    section.card
+                        div.card_inner
+                            p.card_title.card_header.
+                                Snek: A Puzzle BearJam Project
+                            img(id="snek_game_img", src="../assets/bear_jam_snek.png", alt="Main Page for the Game. Menu Options and Picture of Snake Reaching for an apple.")
+                div.card_format
+                    section.card
+                        div.card_inner
+                            p.card_title.card_header.
+                                100 Latinos Dijeron: A Family Trivia Competition Game
+                            img(id="onehunld_game_img", src="../assets/pp_100ld.png", alt="Main Page for the Game. Menu Options and Picture of Snake Reaching for an apple.")
                 div.card_format    
                     section.card#connect_page
                         h2.card_title Let's Connect! Feel Free to Leave Your Information for New Experiences!
@@ -128,26 +147,29 @@ html(lang="en")
                             ul.logo_container
                                 li.list_item
                                     a(href="https://www.linkedin.com/in/alfredochavez0406")
-                                        img(id="logo_linkedin", class="contact_logo", src="../assets/linkedin-logo/LI-Logo.png", alt="Linkedin Portfolio Link")
+                                        img(id="logo_linkedin", class="contact_logo", src="../assets/in-logo/LI-In-Bug.png", alt="Linkedin Portfolio Link")
                                 li.list_item
                                     a(href="../assets/website_portfolio_resume_v2.1.0.pdf" target="_blank")
                                         img(id="logo_resume", class="contact_logo", src="../assets/resume.svg", alt="Resume Portfolio Link")
                                 li.list_item
                                     a(href="https://github.com/achavez1412")
-                                        img(id="logo_github", class="contact_logo", src="../assets/GitHub-Logos/GitHub_Logo.png", alt="Github Portfolio Link")
+                                        img(id="logo_github", class="contact_logo", src="../assets/github-mark/github-mark.png", alt="Github Portfolio Link")
                         div.submit_content
                             form(action="" class="needs-validation" id="submission" novalidate)
                                 div.submit_row
                                     div.submit_group
-                                        label(class="label_star", for="First Name") First Name*
+                                        label(class="label_star", for="First Name") First Name
+                                        label(class="req_submit") *
                                         input(type="text" class="form-control", id="first_name", placeholder="First Name", name="first_name", aria-label="first_name", minlength="1", maxlength="50", required)
                                         span(class="error_message" id="first_name_error")
                                     div.submit_group
-                                        label(class="label_star", for="Last Name") Last Name*
+                                        label(class="label_star", for="Last Name") Last Name
+                                        label(class="req_submit") *
                                         input(type="text", class="form-control", id="last_name", placeholder="Last Name", name="last_name", aria-label="last_name", minlength="1", maxlength="100", required)
                                         span(class="error_message", id="last_name_error")
                                 div.submit_group
-                                    label(class="label_star", for="Email Address") Email Address*
+                                    label(class="label_star", for="Email Address") Email Address
+                                    label(class="req_submit") *
                                     input(type="email", class="form-control", id="email_address", placeholder="Email", name="email_address", aria-label="email_address", minlength="5", maxlength="100", required)
                                     span(class="error_message", id="email_error")
                                 div.submit_group

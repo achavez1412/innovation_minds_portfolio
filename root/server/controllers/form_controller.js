@@ -34,9 +34,10 @@ exports.submit_form = async (req, res) =>{
     try{
         //check for decisionmaking
         //no_exists ? create_new : update
-        const {first_name,last_name,email_address,short_message} = req.body;
-        const document_count_query = await form.countDocuments({$and:[{first_name:first_name},{last_name:last_name},{email_address:email_address}]});
-        const success = await ((document_count_query == 0) ? form_service.create_one_contact(req.body) : form_service.update_one_contact(req.body.email_address,req.body));
+        //cconst {first_name,last_name,email_address,short_message} = req.body;
+        const success = await form_service.post_form(req.body.email_address,req.body);
+        // const document_count_query = await form.countDocuments({$and:[{first_name:first_name},{last_name:last_name},{email_address:email_address}]});
+        // const success = await ((document_count_query == 0) ? form_service.create_one_contact(req.body) : form_service.update_one_contact(req.body.email_address,req.body));
         construct_res_obj(res,success,{},200,500,"Successfully Sent and Saved to Database","Saving to Database Failed");
     } catch(error){
         construct_error_obj(res,error,500,String(error.message),true);

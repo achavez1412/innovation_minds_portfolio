@@ -9,6 +9,18 @@ connect_DB();
 //ensuring json parsing middleware is enabled
 app.use(express.json());
 
+//==== MEASURES ====
+//consider any usage cases throughout pipeline that might void security headers
+//sets header for all responses coming from the browser
+app.use((req,res,next)=>{
+    //browser blocked from MIME sniffing:: (XSS)
+    res.setHeader('X-Content-Type-Options','nosniff');
+    //CSP
+
+    next();
+});
+
+
 //==== REGISTERING ====
 //require routers and controllers
 const v1_lang_router = require("../server/routes/v1/lang_sel_route");

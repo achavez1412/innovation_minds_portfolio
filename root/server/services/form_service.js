@@ -1,5 +1,17 @@
 const form = require("../models/form");
 
+
+async function post_form(id_name, body){
+    try{
+        await form.findOneAndUpdate({email_address:id_name},body,{upsert:true});
+        return true;
+    }
+    catch(error){
+        console.log(error);
+        return false;
+    }
+    
+}
 //!!!assumes body has the adqeruate fields!!!
 
 //creates new contact
@@ -64,6 +76,7 @@ const delete_one_contact= async (id_name) => {
     }
 }
 module.exports = {
+    post_form,
     create_one_contact,
     read_all_contacts,
     update_one_contact,

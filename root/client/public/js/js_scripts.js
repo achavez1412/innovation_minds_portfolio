@@ -240,11 +240,15 @@ $(document).ready(()=>{
             $(elem)[0].setCustomValidity("Invalid");
             $(elem).addClass("form-control");
             $(error_tag).addClass("invalid-feedback");
+            $(error_tag).addClass("req_submit");
+            $(error_tag).removeClass("pass_submit");
             set_form_msg(msg_tag,msg_fail);
         }
         else{
             $(elem)[0].setCustomValidity("");
             $(error_tag).addClass("valid-feedback");
+            $(error_tag).addClass("pass_submit");
+            $(error_tag).removeClass("req_submit");
             $(elem).addClass("was-validated");
             set_form_msg(msg_tag,msg_success);
         }
