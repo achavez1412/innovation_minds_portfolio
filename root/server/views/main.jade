@@ -9,9 +9,19 @@ html(lang="en")
         link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC", crossorigin="anonymous")
         link(rel="stylesheet", href="/css/index.css", type="text/css")
         
+        //- script(type="text/javascript" src="dist/purify.min.js")
+        script(src="https://cdn.jsdelivr.net/npm/dompurify@3.0.3/dist/purify.min.js")
         script(src="/jquery/jquery.min.js")
+
         script(src="/js/ajax_calls.js")
         script(src="/js/js_scripts.js")
+
+        input#id_tag_enum(type="hidden", value=JSON.stringify(ID_TAG_ENUM))
+        input#class_tag_enum(type="hidden", value=JSON.stringify(CLASS_TAG_ENUM)) 
+        input#theme_name_tag_enum(type="hidden", value=JSON.stringify(THEME_NAME_TAG_ENUM)) 
+        input#submission_fields_enum(type="hidden", value=JSON.stringify(SUBMISSION_FIELDS_ENUM)) 
+        input#date_options_enum(type="hidden", value=JSON.stringify(DATE_OPTIONS_ENUM)) 
+        input#time_options_enum(type="hidden", value=JSON.stringify(TIME_OPTIONS_ENUM)) 
     body.body_main#body_main
         header
             div.taskbar_container
@@ -26,16 +36,17 @@ html(lang="en")
             div.ref_square#main_menu_ref_square
             div.form_container
                 form.form
-                    label -- View --
-                    select#dark_light
-                        option(value="light_mode") Light Mode
-                        option(value="dark_mode") Dark Mode
+                    label -- View --            
+                    select#dark_light(name="dark_light")
+                        each theme_option in THEME_MODE
+                            option(value=theme_option.VALUE)= theme_option.NAME 
                 form.form
                     label -- Language --
-                    select#language_selector
-                        option(value="en-us") English
-                        option(value="es-mx") Spanish
-                        option(value="zh-cn") Mandarin Chinese
+                    select#language_selector(name="language_selector")
+                        each language_option in LANGUAGES
+                            option(value=language_option.VALUE)= language_option.NAME
+                button(type="button", class="form",id="admin_button")
+                                a(href="/admin", id="admin_button_content") LOG IN
         main 
             div.wrapper_container#main_page
                 div.container.formatting_block
@@ -90,7 +101,7 @@ html(lang="en")
                             p.translatable_text#intro_skills.
                                 I am from California with a strong interest in Robotics, 
                                 Embedded Systems, and Software development. A few Technical Proficiencies include:
-                            ul 
+                            ul
                                 li.translatable_text#item1_skills Real-Time Embedded Software Development
                                 li.translatable_text#item2_skills Database Management Systems
                                 li.translatable_text#item3_skills Signal Processing
@@ -143,18 +154,18 @@ html(lang="en")
                 div.card_format    
                     section.card#connect_page
                         h2.card_title Let's Connect! Feel Free to Leave Your Information for New Experiences!
-                        div.logo_wrapper#contact_logo_wrapper
-                            ul.logo_container
-                                li.list_item
-                                    a(href="https://www.linkedin.com/in/alfredochavez0406")
-                                        img(id="logo_linkedin", class="contact_logo", src="../assets/in-logo/LI-In-Bug.png", alt="Linkedin Portfolio Link")
-                                li.list_item
-                                    a(href="../assets/website_portfolio_resume_v2.1.0.pdf" target="_blank")
-                                        img(id="logo_resume", class="contact_logo", src="../assets/resume.svg", alt="Resume Portfolio Link")
-                                li.list_item
-                                    a(href="https://github.com/achavez1412")
-                                        img(id="logo_github", class="contact_logo", src="../assets/github-mark/github-mark.png", alt="Github Portfolio Link")
                         div.submit_content
+                            div.logo_wrapper#contact_logo_wrapper
+                                ul.logo_container
+                                    li.list_item
+                                        a(href="https://www.linkedin.com/in/alfredochavez0406")
+                                            img(id="logo_linkedin", class="contact_logo", src="../assets/in-logo/LI-In-Bug.png", alt="Linkedin Portfolio Link")
+                                    li.list_item
+                                        a(href="../assets/website_portfolio_resume_v2.1.0.pdf" target="_blank")
+                                            img(id="logo_resume", class="contact_logo", src="../assets/resume.svg", alt="Resume Portfolio Link")
+                                    li.list_item
+                                        a(href="https://github.com/achavez1412")
+                                            img(id="logo_github", class="contact_logo", src="../assets/github-mark/github-mark.png", alt="Github Portfolio Link")
                             form(action="" class="needs-validation" id="submission" novalidate)
                                 div.submit_row
                                     div.submit_group
