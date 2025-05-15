@@ -4,6 +4,8 @@ const path = require("path");
 const express = require("express");
 const connect_DB = require("./connectDB.js");
 const app = express();
+//TODO: import enum file
+const enum_dropdown = require("../config/enum.js");
 
 connect_DB();
 //ensuring json parsing middleware is enabled
@@ -16,7 +18,7 @@ app.use((req,res,next)=>{
     //browser blocked from MIME sniffing:: (XSS)
     res.setHeader('X-Content-Type-Options','nosniff');
     //CSP
-
+    
     next();
 });
 
@@ -26,6 +28,7 @@ app.use((req,res,next)=>{
 const v1_lang_router = require("../server/routes/v1/lang_sel_route");
 // const v1_submission_form_router = require("../server/routes/v1/submission_form_route");
 const v1_mongoose_form_router = require("../server/routes/v1/form_route");
+
 
 //serve access to view templates using jade template engine
 app.set("view engine","jade");
@@ -49,7 +52,21 @@ app.use("/api/routes/v1/", v1_mongoose_form_router);
 //initialize route towards app main default '/'
 //render jade views
 app.get('/',(req,res)=>{
-    res.render("main");
+    //check render parameters to import files into as obj key:val locals->objlocal var
+    res.render("main",{
+        LANGUAGES:enum_dropdown.LANGUAGES, 
+        THEME_MODE:enum_dropdown.THEME_MODE, 
+        ID_TAG_ENUM:enum_dropdown.ID_TAG_ENUM,
+        CLASS_TAG_ENUM:enum_dropdown.CLASS_TAG_ENUM,
+        THEME_NAME_TAG_ENUM:enum_dropdown.THEME_NAME_TAG_ENUM,
+        DATE_OPTIONS_ENUM:enum_dropdown.DATE_OPTIONS_ENUM,
+        TIME_OPTIONS_ENUM:enum_dropdown.TIME_OPTIONS_ENUM,
+        SUBMISSION_FIELDS_ENUM:enum_dropdown.SUBMISSION_FIELDS_ENUM
+    });
+});
+
+app.get('/admin',(req,res)=>{
+    res.render("admin");
 });
 
 //port status codes check

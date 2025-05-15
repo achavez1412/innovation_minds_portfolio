@@ -20,7 +20,7 @@ const create_one_contact= async(body)=>{
         const {first_name,last_name,email_address,short_message} = body;
         console.log("This are the fields:", first_name, last_name, email_address,short_message);
         const form_data = new form({first_name,last_name,email_address,short_message});
-        await form_data.save(); //difference to the $set, upsert:true option
+        await form_data.save(); //difference to the $set, upsert:true option  //auto new creates, duplicate made 
         return true;
     } catch(error){
         console.log(error);

@@ -1,9 +1,11 @@
-const { data } = require("jquery");
-const form = require("../models/form");
 const form_service = require("../services/form_service");
 
+//creates a class within js
 
-
+// const form_controller={
+///EXPORTS FUNC IN HERE
+    //func_name : func(){}
+// }
 //short hand structure compared to the other controllers
 function construct_res_obj (res,success_bool,data,status_code_success,status_code_fail,message_success,message_fail){
     if(!success_bool){
