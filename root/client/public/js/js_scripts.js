@@ -12,32 +12,32 @@ const submission_fields_arr = ["first_name", "last_name", "email_address", "shor
 // const month_names = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 // const days_week_names = ["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];
 
-function enableMode(src_obj_id="", enabled_name="", disabled_name="", dark_mode_id_name, activated=null){
-    try{
-        if(arguments.length !== 5){
-            console.log("ArgumentError: Incorrect Number of Arguments");
-            throw new Error("ArgumentError: Incorrect Number of Arguments");
-        }
-        for(let i=0; i<arguments.length; i++){
-            if(i==0 && typeof(arguments[i] === "object")||(i==4 && arguments[i]=== null)){
-                continue;
-            }
-            else{
-                if(typeof(arguments[i])!== "string" || arguments[i] === ""){
-                    console.log(`ArgumentError: Invalid Argument ${arguments[i]}`);
-                    throw new Error("ArgumentError: Invalid Argument");
-                }
-            }
-        }
+// function enableMode(src_obj_id="", enabled_name="", disabled_name="", dark_mode_id_name, activated=null){
+//     try{
+//         if(arguments.length !== 5){
+//             console.log("ArgumentError: Incorrect Number of Arguments");
+//             throw new Error("ArgumentError: Incorrect Number of Arguments");
+//         }
+//         for(let i=0; i<arguments.length; i++){
+//             if(i==0 && typeof(arguments[i] === "object")||(i==4 && arguments[i]=== null)){
+//                 continue;
+//             }
+//             else{
+//                 if(typeof(arguments[i])!== "string" || arguments[i] === ""){
+//                     console.log(`ArgumentError: Invalid Argument ${arguments[i]}`);
+//                     throw new Error("ArgumentError: Invalid Argument");
+//                 }
+//             }
+//         }
 
-        $(src_obj_id).removeClass(disabled_name);
-        $(src_obj_id).addClass(enabled_name);
-        localStorage.setItem(dark_mode_id_name,activated);
-    } catch(error){
-        console.log(`We could not mode due to Error: ${error}`);
-        return;
-    }
-}
+//         $(src_obj_id).removeClass(disabled_name);
+//         $(src_obj_id).addClass(enabled_name);
+//         localStorage.setItem(dark_mode_id_name,activated);
+//     } catch(error){
+//         console.log(`We could not mode due to Error: ${error}`);
+//         return;
+//     }
+// }
 
 //assumes the target_id is in the href 
 //gets DOM object to call reference rect and offset scroll behavior
@@ -157,19 +157,23 @@ $(document).ready(()=>{
     const DATE_OPTIONS_ENUM = JSON.parse($("#date_options_enum").val());
     const TIME_OPTIONS_ENUM = JSON.parse($("#time_options_enum").val());
 
+    //layout
     var dark_mode = localStorage.getItem(THEME_NAME_TAG_ENUM.dark_mode_id_name);
     const input_theme = $(ID_TAG_ENUM.dark_light_mode_id);
+
     const body_main = $(CLASS_TAG_ENUM.main_body_class);
     
     //disable submission process button default
     $(ID_TAG_ENUM.submission_button_id).prop("disabled",true);
-    if(dark_mode === "active"){
-        input_theme.val(THEME_NAME_TAG_ENUM.dark_mode_id_name);
-        enableMode(body_main, THEME_NAME_TAG_ENUM.dark_mode_id_name, THEME_NAME_TAG_ENUM.light_mode_id_name, THEME_NAME_TAG_ENUM.dark_mode_id_name, "active");
-    } else{
-        input_theme.val(THEME_NAME_TAG_ENUM.light_mode_id_name);
-        enableMode(body_main, THEME_NAME_TAG_ENUM.light_mode_id_name, THEME_NAME_TAG_ENUM.dark_mode_id_name, THEME_NAME_TAG_ENUM.dark_mode_id_name, null);
-    }
+
+    //layout
+    // if(dark_mode === "active"){
+    //     input_theme.val(THEME_NAME_TAG_ENUM.dark_mode_id_name);
+    //     enableMode(body_main, THEME_NAME_TAG_ENUM.dark_mode_id_name, THEME_NAME_TAG_ENUM.light_mode_id_name, THEME_NAME_TAG_ENUM.dark_mode_id_name, "active");
+    // } else{
+    //     input_theme.val(THEME_NAME_TAG_ENUM.light_mode_id_name);
+    //     enableMode(body_main, THEME_NAME_TAG_ENUM.light_mode_id_name, THEME_NAME_TAG_ENUM.dark_mode_id_name, THEME_NAME_TAG_ENUM.dark_mode_id_name, null);
+    // }
 
     setInterval(function(){
         create_date_time(ID_TAG_ENUM.date_id, DATE_OPTIONS_ENUM, ID_TAG_ENUM.time_id, TIME_OPTIONS_ENUM, ID_TAG_ENUM.language_selector_mode_id);
@@ -229,15 +233,15 @@ $(document).ready(()=>{
     }
 
     //====event trigger====
-    $(ID_TAG_ENUM.dark_light_mode_id).on("change", ()=>{
-        dark_mode = localStorage.getItem("dark_mode");
-        if(dark_mode !== "active"){
-            enableMode(body_main,THEME_NAME_TAG_ENUM.dark_mode_id_name,THEME_NAME_TAG_ENUM.light_mode_id_name,THEME_NAME_TAG_ENUM.dark_mode_id_name,"active");
-        }
-        else if(dark_mode === "active"){
-            enableMode(body_main,THEME_NAME_TAG_ENUM.light_mode_id_name,THEME_NAME_TAG_ENUM.dark_mode_id_name,THEME_NAME_TAG_ENUM.dark_mode_id_name,null);
-        }
-    });
+    // $(ID_TAG_ENUM.dark_light_mode_id).on("change", ()=>{
+    //     dark_mode = localStorage.getItem(THEME_NAME_TAG_ENUM.dark_mode_id_name);
+    //     if(dark_mode !== "active"){
+    //         enableMode(body_main,THEME_NAME_TAG_ENUM.dark_mode_id_name,THEME_NAME_TAG_ENUM.light_mode_id_name,THEME_NAME_TAG_ENUM.dark_mode_id_name,"active");
+    //     }
+    //     else if(dark_mode === "active"){
+    //         enableMode(body_main,THEME_NAME_TAG_ENUM.light_mode_id_name,THEME_NAME_TAG_ENUM.dark_mode_id_name,THEME_NAME_TAG_ENUM.dark_mode_id_name,null);
+    //     }
+    // });
 
     $(ID_TAG_ENUM.language_selector_mode_id).on("change", async ()=>{
         //error handling for key checking

@@ -51,9 +51,23 @@ app.use("/api/routes/v1/", v1_mongoose_form_router);
 
 //initialize route towards app main default '/'
 //render jade views
+// app.get('/',(req,res)=>{
+//     //check render parameters to import files into as obj key:val locals->objlocal var
+//     res.render("main",{
+//         LANGUAGES:enum_dropdown.LANGUAGES, 
+//         THEME_MODE:enum_dropdown.THEME_MODE, 
+//         ID_TAG_ENUM:enum_dropdown.ID_TAG_ENUM,
+//         CLASS_TAG_ENUM:enum_dropdown.CLASS_TAG_ENUM,
+//         THEME_NAME_TAG_ENUM:enum_dropdown.THEME_NAME_TAG_ENUM,
+//         DATE_OPTIONS_ENUM:enum_dropdown.DATE_OPTIONS_ENUM,
+//         TIME_OPTIONS_ENUM:enum_dropdown.TIME_OPTIONS_ENUM,
+//         SUBMISSION_FIELDS_ENUM:enum_dropdown.SUBMISSION_FIELDS_ENUM
+//     });
+// });
+
 app.get('/',(req,res)=>{
     //check render parameters to import files into as obj key:val locals->objlocal var
-    res.render("main",{
+    res.render("admin_page",{
         LANGUAGES:enum_dropdown.LANGUAGES, 
         THEME_MODE:enum_dropdown.THEME_MODE, 
         ID_TAG_ENUM:enum_dropdown.ID_TAG_ENUM,
@@ -65,9 +79,9 @@ app.get('/',(req,res)=>{
     });
 });
 
-app.get('/admin',(req,res)=>{
-    res.render("admin");
-});
+// app.get('/admin',(req,res)=>{
+//     res.render("admin");
+// });
 
 //port status codes check
 

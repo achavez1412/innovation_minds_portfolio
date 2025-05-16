@@ -11,6 +11,7 @@ html{
     overflow: scroll;
 }
 
+/* layout */
 :root{
     --clr-bkgrd:#283618;
     --clr-container:#bf7f3b;
@@ -69,6 +70,7 @@ html{
     --background:var(--clr-dark-secondary);
 }
 
+/* layout */
 .dark_mode{
     --clr-bkgrd:var(--clr-dark-bkgrd);
     --clr-nav:var(--clr-dark-nav);
@@ -81,6 +83,7 @@ html{
     --clr-hover:var(--clr-dark-hover);
 }
 
+/* layout */
 .light_mode{
     --clr-bkgrd:var(--clr-light-bkgrd);
     --clr-nav:var(--clr-light-nav);
@@ -94,13 +97,15 @@ html{
     filter:none;
 }
 
+/* layout */
 .clear_fix::after{
     content:'';
     display:table;
     clear:both;
 }
 
-.body_main{
+/* layout */
+.body_layout_template{
     background-color: var(--clr-bkgrd);
     font-weight: 400;
     margin:0;

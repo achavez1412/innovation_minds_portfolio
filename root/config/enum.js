@@ -31,13 +31,14 @@ const ID_TAG_ENUM = Object.freeze({
 
 const CLASS_TAG_ENUM = Object.freeze({
     main_body_class:".body_main",
+    template_layout_body_class:".body_layout_template",
     error_message_class:".error_message"
 });
 
 const THEME_NAME_TAG_ENUM = Object.freeze({
     dark_mode_id_name:"dark_mode",
-    light_mode_id_name:"light_mode"
-
+    light_mode_id_name:"light_mode",
+    values:["activate","null"]
 });
 
 const TIME_OPTIONS_ENUM = Object.freeze({
