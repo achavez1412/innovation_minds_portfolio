@@ -6,3 +6,4 @@ client/node_modules/
 client/package-lock.json
 client/package.json
 client/public/Grad_pic.png
+client/jquery-3.7.1.min.js

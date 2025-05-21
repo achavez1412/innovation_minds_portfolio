@@ -27,24 +27,16 @@ html(lang="en")
     body.body_layout_template
         header 
             div.form_container
-                    form.form
-                        label -- View --            
-                        select#dark_light(name="dark_light")
-                            each theme_option in THEME_MODE
-                                option(value=theme_option.VALUE)= theme_option.NAME 
+                a(href="/", class="form")
+                    img(src="../assets/angle-square-left.svg",alt="Go to Previous Page Button")
+                form.form
+                    label -- View --            
+                    select#dark_light(name="dark_light")
+                        each theme_option in THEME_MODE
+                            option(value=theme_option.VALUE)= theme_option.NAME 
         div.card_format    
             section.card
                 h2.card_title Admin
                 div.submit_content
-                    //- form(action="" class="needs-validation" id="submission" novalidate)
-                    //-     div.submit_group
-                    //-         label(class="label_star", for="User Credentials") Email Address or Username
-                    //-         label(class="req_submit") *
-                    //-         input(type="", class="form-control", id="user_credentials", placeholder="Email or Username", name="user_credentials", aria-label="user_credentials", minlength="5", maxlength="100", required)
-                    //-         span(class="error_message", id="user_credentials_error")
-                    //-     div.submit_group
-                    //-         label(class="label_star", for="Password") Password
-                    //-         label(class="req_submit") *
-                    //-         input(type="text", class="form-control", id="password", placeholder="Password", name="password", aria-label="password", minlength="5", maxlength="50", required)
-                    //-         span(class="error_message", id="email_error")
-                    button(class="", id="log_in_button", type="submit") LOG IN
+                    button(type="button", class="",id="")
+                                a(href="/admin", id="admin_button_content", style="background-color:green") LOG IN

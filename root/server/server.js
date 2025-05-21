@@ -8,8 +8,9 @@ const app = express();
 const enum_dropdown = require("../config/enum.js");
 
 connect_DB();
-//ensuring json parsing middleware is enabled
-app.use(express.json());
+
+app.use(express.urlencoded({extended:true})); //ensuring requests coming into datatables are qs(querystring) objects
+app.use(express.json()); //ensuring json parsing middleware is enabled 
 
 //==== MEASURES ====
 //consider any usage cases throughout pipeline that might void security headers
@@ -29,6 +30,8 @@ const v1_lang_router = require("../server/routes/v1/lang_sel_route");
 // const v1_submission_form_router = require("../server/routes/v1/submission_form_route");
 const v1_mongoose_form_router = require("../server/routes/v1/form_route");
 
+const v1_admin_table_router = require("./routes/v1/admin_table_route.js");
+
 
 //serve access to view templates using jade template engine
 app.set("view engine","jade");
@@ -47,27 +50,15 @@ app.use('/jquery', express.static(path.join(__dirname,"../client","node_modules"
 app.use("/api/routes/v1/", v1_lang_router);
 // app.use("/api/routes/v1/",v1_submission_form_router);
 app.use("/api/routes/v1/", v1_mongoose_form_router);
+app.use("/api/routes/v1/", v1_admin_table_router);
+
 
 
 //initialize route towards app main default '/'
 //render jade views
-// app.get('/',(req,res)=>{
-//     //check render parameters to import files into as obj key:val locals->objlocal var
-//     res.render("main",{
-//         LANGUAGES:enum_dropdown.LANGUAGES, 
-//         THEME_MODE:enum_dropdown.THEME_MODE, 
-//         ID_TAG_ENUM:enum_dropdown.ID_TAG_ENUM,
-//         CLASS_TAG_ENUM:enum_dropdown.CLASS_TAG_ENUM,
-//         THEME_NAME_TAG_ENUM:enum_dropdown.THEME_NAME_TAG_ENUM,
-//         DATE_OPTIONS_ENUM:enum_dropdown.DATE_OPTIONS_ENUM,
-//         TIME_OPTIONS_ENUM:enum_dropdown.TIME_OPTIONS_ENUM,
-//         SUBMISSION_FIELDS_ENUM:enum_dropdown.SUBMISSION_FIELDS_ENUM
-//     });
-// });
-
 app.get('/',(req,res)=>{
     //check render parameters to import files into as obj key:val locals->objlocal var
-    res.render("admin_page",{
+    res.render("main",{
         LANGUAGES:enum_dropdown.LANGUAGES, 
         THEME_MODE:enum_dropdown.THEME_MODE, 
         ID_TAG_ENUM:enum_dropdown.ID_TAG_ENUM,
@@ -79,9 +70,45 @@ app.get('/',(req,res)=>{
     });
 });
 
-// app.get('/admin',(req,res)=>{
-//     res.render("admin");
+// app.get('/',(req,res)=>{
+//     //check render parameters to import files into as obj key:val locals->objlocal var
+//     res.render("admin_page",{
+//         LANGUAGES:enum_dropdown.LANGUAGES, 
+//         THEME_MODE:enum_dropdown.THEME_MODE, 
+//         ID_TAG_ENUM:enum_dropdown.ID_TAG_ENUM,
+//         CLASS_TAG_ENUM:enum_dropdown.CLASS_TAG_ENUM,
+//         THEME_NAME_TAG_ENUM:enum_dropdown.THEME_NAME_TAG_ENUM,
+//         DATE_OPTIONS_ENUM:enum_dropdown.DATE_OPTIONS_ENUM,
+//         TIME_OPTIONS_ENUM:enum_dropdown.TIME_OPTIONS_ENUM,
+//         SUBMISSION_FIELDS_ENUM:enum_dropdown.SUBMISSION_FIELDS_ENUM
+//     });
 // });
+
+app.get('/admin_login',(req,res)=>{
+    res.render("admin_login",{
+        LANGUAGES:enum_dropdown.LANGUAGES, 
+        THEME_MODE:enum_dropdown.THEME_MODE, 
+        ID_TAG_ENUM:enum_dropdown.ID_TAG_ENUM,
+        CLASS_TAG_ENUM:enum_dropdown.CLASS_TAG_ENUM,
+        THEME_NAME_TAG_ENUM:enum_dropdown.THEME_NAME_TAG_ENUM,
+        DATE_OPTIONS_ENUM:enum_dropdown.DATE_OPTIONS_ENUM,
+        TIME_OPTIONS_ENUM:enum_dropdown.TIME_OPTIONS_ENUM,
+        SUBMISSION_FIELDS_ENUM:enum_dropdown.SUBMISSION_FIELDS_ENUM
+    });
+});
+
+app.get('/admin',(req,res)=>{
+    res.render("admin_page",{
+        LANGUAGES:enum_dropdown.LANGUAGES, 
+        THEME_MODE:enum_dropdown.THEME_MODE, 
+        ID_TAG_ENUM:enum_dropdown.ID_TAG_ENUM,
+        CLASS_TAG_ENUM:enum_dropdown.CLASS_TAG_ENUM,
+        THEME_NAME_TAG_ENUM:enum_dropdown.THEME_NAME_TAG_ENUM,
+        DATE_OPTIONS_ENUM:enum_dropdown.DATE_OPTIONS_ENUM,
+        TIME_OPTIONS_ENUM:enum_dropdown.TIME_OPTIONS_ENUM,
+        SUBMISSION_FIELDS_ENUM:enum_dropdown.SUBMISSION_FIELDS_ENUM
+    });
+});
 
 //port status codes check
 

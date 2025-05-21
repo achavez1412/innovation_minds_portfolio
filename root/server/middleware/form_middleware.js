@@ -22,7 +22,9 @@ function authentication_form_access(action){
 function sanitizer(req=false,body_to_sanitize,return_clean=false){
     //check for proper body?
     const clean_body = DOMPurify.sanitize(body_to_sanitize);
-    req.body = (req) ? clean_body : req.body;
+    if(req instanceof Request){
+        req.body = (req) ? clean_body : req.body;
+    }
     return (return_clean) ? clean_body : true;
 }
 

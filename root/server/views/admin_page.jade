@@ -13,11 +13,13 @@ html(lang="en")
         //- script(type="text/javascript" src="dist/purify.min.js")
         script(src="https://cdn.jsdelivr.net/npm/dompurify@3.0.3/dist/purify.min.js")
         script(src="/jquery/jquery.min.js")
+        //- script(src="https://code.jquery.com/jquery-3.6.0.min.js")
         script(type="text/javascript", src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js")
 
         script(src="/js/layout.js")
         script(src="/js/ajax_calls.js")
         script(src="/js/js_scripts.js")
+        script(src="/js/table_admin.js")
 
         input#id_tag_enum(type="hidden", value=JSON.stringify(ID_TAG_ENUM))
         input#class_tag_enum(type="hidden", value=JSON.stringify(CLASS_TAG_ENUM)) 
@@ -29,22 +31,31 @@ html(lang="en")
     body.body_layout_template
         header 
             div.form_container
-                    form.form
-                        label -- View --            
-                        select#dark_light(name="dark_light")
-                            each theme_option in THEME_MODE
-                                option(value=theme_option.VALUE)= theme_option.NAME 
+                a(href="/", class="form")
+                    img(src="../assets/angle-square-left.svg",alt="Go to Previous Page Button",style="width:3rem;height:auto")
+                form.form
+                    label -- View --            
+                    select#dark_light(name="dark_light")
+                        each theme_option in THEME_MODE
+                            option(value=theme_option.VALUE)= theme_option.NAME 
             p.
                 pretend there is a table here
         main 
             section.cards.formatting_block
                 div.card_format
                     section.card
-                        table(display="row-border", id="#contact_table")
+                        table(id="contact_table", class="display")
                             thead Contacts 
                                 tr 
                                     th First Name 
                                     th Last Name 
                                     th Email Address 
-                                    th Short Message 
+
                     
+        //- table(id="myTable", class="display")
+        //-     thead
+        //-         tr
+        //-             th Column 1
+        //-             th Column 2
+        //-     tbody
+               
