@@ -65,6 +65,19 @@ const REQUIRED_OPTIONAL_FIELDS = Object.freeze({
     short_message:["string","optional"]
 });
 
+//datatable 0: load all rec, 1: load search recs,
+const AJAX_CONSTRUCTION_FIELDS = Object.freeze([
+    {
+        url:"api/routes/v1/load",
+        type:"GET",
+        dataType:"json"
+    },
+    {
+        url:"api/routes/v1/load:search",
+        type:"GET",
+        dataType:"json"
+    }
+]);
 
 module.exports ={
     LANGUAGES,
@@ -75,5 +88,6 @@ module.exports ={
     TIME_OPTIONS_ENUM,
     DATE_OPTIONS_ENUM,
     SUBMISSION_FIELDS_ENUM,
-    REQUIRED_OPTIONAL_FIELDS
+    REQUIRED_OPTIONAL_FIELDS,
+    AJAX_CONSTRUCTION_FIELDS
 };

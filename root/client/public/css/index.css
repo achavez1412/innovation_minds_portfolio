@@ -18,10 +18,12 @@ html{
     --clr-bodr:#4355bb;
     --clr-bodr-blu:#2d74d1;
 
+    --fw-txt-l:700;
     --fw-txt-m:500;
     --fw-txt-sm:300;
     --fw-txt-mini:400;
 
+    --fs-txt-xl:2.75rem;
     --fs-txt-l:2rem;
     --fs-txt-m:1.5rem;
     --fs-txt-sm: 1rem;
@@ -661,3 +663,36 @@ nav{
     .form-input:valid{
         --clr-alert:rgb(227, 189, 237);
     } 
+
+
+/* table page_admin */
+#table_card{
+    padding: 1rem;
+}
+.contact_table_title_container{
+    border-bottom: .5rem solid var(--clr-accent300);
+}
+    #contact_table_title{
+        /* background-color: var(--clr-accent200); */
+        text-align: center;
+        justify-content: center;
+        font-weight: var(--fw-txt-l);
+        font-size: var(--fs-txt-xl);
+        margin:0rem;
+        padding:1rem 0rem 0rem 0rem;
+    }
+
+
+.dt-layout-start .dt-length,
+.dt-layout-end .dt-search{
+    display:flex;
+    align-items: center;
+    gap:1rem;
+}
+
+.dt-layout-start .dt-length .dt-input,
+.dt-layout-end .dt-search .dt-input{
+    background-color: var(--clr-accent200);
+    color:var(--clr-secondary);
+    border:2px solid var(--clr-accent300);
+}

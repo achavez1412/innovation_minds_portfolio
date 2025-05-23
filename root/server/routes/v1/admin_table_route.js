@@ -10,6 +10,7 @@ const table_middleware = require("../../middleware/table_middleware");
 //delete - delete the chosen record
 //update - update the chosen record
 
-table_router.get("/load",table_middleware.load_validator, table_controller.load_records);
+// table_router.get("/load",table_middleware.load_validator, table_controller.load_records);
+table_router.get("/load:search",table_middleware.search_validator, table_controller.search_records);
 
 module.exports=table_router;

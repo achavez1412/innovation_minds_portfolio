@@ -31,6 +31,23 @@ const load_validator =(req,res,next)=>{
     }
 };
 
+const search_validator=(req,res,next)=>{
+    try{    
+        //create for loop for sanitizing all inputs
+        // const search = req.query['search[value]'];
+        req.query['search[value]'] = DOMPurify.sanitize(req.query['search[value]'] || "");
+
+        req.query.start = parseInt(req.query?.start) || 0;
+        req.query.length = parseInt(req.query?.length) || 0;
+        // console.log(req.query['search[value]']);
+        console.log(typeof(req.query.start));
+        next();
+    } catch(e){
+        console.log(`Error: ${e.message}`);
+    }
+};
+
 module.exports={
-    load_validator
+    load_validator,
+    search_validator
 };

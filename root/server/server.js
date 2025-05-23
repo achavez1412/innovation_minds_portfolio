@@ -93,7 +93,7 @@ app.get('/admin_login',(req,res)=>{
         THEME_NAME_TAG_ENUM:enum_dropdown.THEME_NAME_TAG_ENUM,
         DATE_OPTIONS_ENUM:enum_dropdown.DATE_OPTIONS_ENUM,
         TIME_OPTIONS_ENUM:enum_dropdown.TIME_OPTIONS_ENUM,
-        SUBMISSION_FIELDS_ENUM:enum_dropdown.SUBMISSION_FIELDS_ENUM
+        SUBMISSION_FIELDS_ENUM:enum_dropdown.SUBMISSION_FIELDS_ENUM,
     });
 });
 
@@ -106,7 +106,8 @@ app.get('/admin',(req,res)=>{
         THEME_NAME_TAG_ENUM:enum_dropdown.THEME_NAME_TAG_ENUM,
         DATE_OPTIONS_ENUM:enum_dropdown.DATE_OPTIONS_ENUM,
         TIME_OPTIONS_ENUM:enum_dropdown.TIME_OPTIONS_ENUM,
-        SUBMISSION_FIELDS_ENUM:enum_dropdown.SUBMISSION_FIELDS_ENUM
+        SUBMISSION_FIELDS_ENUM:enum_dropdown.SUBMISSION_FIELDS_ENUM,
+        AJAX_CONSTRUCTION_FIELDS:enum_dropdown.AJAX_CONSTRUCTION_FIELDS
     });
 });
 
